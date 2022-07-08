@@ -1,0 +1,30 @@
+body {
+    background-color: gray;
+    text-align: center;
+    margin-top: 100px;
+    font-size: 20px;
+    font-family: Arial;
+}
+form div {
+    text-align: right;
+    padding-top: 5%;
+    padding-right: 40%;
+}
+input[type="submit"] {
+    background-color: white;
+    margin: 10px;
+    width: 100px;
+    height: 25px;
+    border: solid 2px black;
+    border-radius: 6px;
+    cursor: pointer;
+}
+form div input {
+    width: 200px !important;
+    height: 25px !important;
+    border: solid 2px black;
+    border-radius: 4px; 
+}
+form div input, form div label {
+    margin-bottom: 10px;
+}

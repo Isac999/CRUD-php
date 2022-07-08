@@ -1,0 +1,56 @@
+body {
+    background-color: gray;
+    text-align: center;
+    margin-top: 50px;
+    font-size: 20px;
+    font-family: Arial;
+}
+input[type="submit"] {
+    background-color: white;
+    margin-left: 0;
+    width: 100px;
+    height: 30px;
+    border: solid 2px black;
+    border-radius: 6px;
+    cursor: pointer;
+}
+input[type="text"], input[type="number"] {
+    width: 200px;
+    height: 25px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    border: solid 2px black;
+    border-radius: 4px; 
+}
+table {
+    padding: 10px;
+    border: none;
+    text-align: left;
+    margin-left: 200px;
+}
+td, th {
+    padding: 5px;
+}
+fieldset {
+    border: solid 4px black;
+    border-radius: 5px;
+    text-align: center;
+}
+form {
+    text-align: center;
+}
+form div {
+    margin-right: 40%;
+    text-align: right;
+}
+form div input[type="submit"] {
+    margin-right: 10%;
+}
+#select-css {
+    width: 208px;
+    height: 30px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    border: solid 2px black;
+    border-radius: 4px; 
+}  
