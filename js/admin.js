@@ -1,7 +1,5 @@
 const selectCreate = document.querySelector('#select-table-create');
 const selectUpdate = document.querySelector('#select-table-update');
-const selectDelete = document.querySelector('#select-table-delete');
-const selectRead = document.querySelector('#select-table-read');
 
 selectCreate.addEventListener('change', (event) => {
     choice(event);
@@ -9,21 +7,29 @@ selectCreate.addEventListener('change', (event) => {
 selectUpdate.addEventListener('change', (event) => {
     choice(event);
 })
-selectDelete.addEventListener('change', (event) => {
-    choice(event);
-})
-selectRead.addEventListener('change', (event) => {
-    choice(event);
-})
+
 
 function choice(param) {
+    const fieldset = param.target.parentElement;
+    const form = fieldset.querySelector('form');
+
     switch(param.target.value) {
         case 'books':
-            prompt('books');
-            break;
+            if (param.target.id == 'select-table-create') {
+                form.innerHTML = createBooks;
+                break;
+            } else if (param.target.id == 'select-table-update') {
+                form.innerHTML = updateBooks;
+                break;
+            }
         case 'customers':
-            prompt('cusmoters');
-            break;
+            if (param.target.id == 'select-table-create') {
+                form.innerHTML = createCustomers;
+                break;
+            } else if (param.target.id == 'select-table-update') {
+                form.innerHTML = updateCustomers;
+                break;
+            }
         case 'books_rentals':
             //
             break;
@@ -38,3 +44,59 @@ function choice(param) {
             break;
     }
 }
+
+var createBooks = `
+    <label for="id">Id: </label>
+    <input type="number" name="id" placeholder="Type here" required> <br>
+    <label for="name">Name: </label>
+    <input type="text" name="name" placeholder="Type here"> <br>
+    <label for="genre">Genre: </label>
+    <input type="text" name="genre" placeholder="Type here"> <br>
+    <label for="author">Author: </label>
+    <input type="text" name="author" placeholder="Type here"> <br>
+    <label for="library_id">Library id: </label>
+    <input type="number" name="library_id" placeholder="Type here"> <br>
+    <input type="submit" value="send">
+`
+var createCustomers = `
+    <label for="id">Id: </label>
+    <input type="number" name="id" placeholder="Type here" required> <br>
+    <label for="name">Name: </label>
+    <input type="text" name="name" placeholder="Type here"> <br>
+    <label for="birth">Birth: </label>
+    <input type="date" name="birth" placeholder="Type here"> <br>
+    <label for="city">City: </label>
+    <input type="text" name="city" placeholder="Type here"> <br>
+    <input type="submit" value="send">
+`
+var updateBooks = `
+    <div>
+        <label for="id-target">Id: </label>
+        <input type="number" name="id-target" placeholder="Id target" required> <br>
+        <label for="select-opt"> Attribute you want to change: </label>
+        <select name="select-opt" id="select-css">
+            <option value="name">Name</option>
+            <option value="genre">Genre</option>
+            <option value="author">Author</option>
+            <option value="library_id">Library id</option>
+        </select> <br>
+        <label for="new-value" required>Enter the new value: </label> 
+        <input type="text" name="new-value" placeholder="new attribute value"> <br>
+    </div>
+    <input type="submit" value="change">
+    `
+var updateCustomers = `
+    <div>
+        <label for="id-target">Id: </label>
+        <input type="number" name="id-target" placeholder="Id target" required> <br>
+        <label for="select-opt"> Attribute you want to change: </label>
+        <select name="select-opt" id="select-css">
+            <option value="name">Name</option>
+            <option value="birth">Birth</option>
+            <option value="city">City</option>
+        </select> <br>
+        <label for="new-value" required>Enter the new value: </label> 
+        <input type="text" name="new-value" placeholder="new attribute value"> <br>
+    </div>
+    <input type="submit" value="change">
+    `

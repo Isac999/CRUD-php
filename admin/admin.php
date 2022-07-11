@@ -15,7 +15,7 @@ include('protect.php');
     <a href='logout.php'> To end your session click here </a> <br> <br>
     <fieldset>
     <legend><h2> Register data </h2></legend>
-        <select name="select-table-update" class="select-table-update">
+        <select name="select-table-create" id="select-table-create">
             <option value="books">Books</option>
             <option value="customers">Customers</option>
             <option value="books_rentals">Books Rentals</option>
@@ -41,7 +41,7 @@ include('protect.php');
     </fieldset>
     <fieldset>
         <legend><h2> Update data </h2></legend>
-        <select name="select-table-update" class="select-table-update">
+        <select name="select-table-update" id="select-table-update">
             <option value="books">Books</option>
             <option value="customers">Customers</option>
             <option value="books_rentals">Books Rentals</option>
@@ -68,7 +68,7 @@ include('protect.php');
     </fieldset>
     <fieldset>
     <legend><h2> Delete data </h2></legend>
-        <select name="select-table-update" class="select-table-update">
+        <select name="select-table-delete" id="select-table-delete">
             <option value="books">Books</option>
             <option value="customers">Customers</option>
             <option value="books_rentals">Books Rentals</option>
@@ -86,18 +86,11 @@ include('protect.php');
     </fieldset>
     <fieldset>
         <legend><h2> Query field </h2></legend>
-        <select name="select-table-update" class="select-table-update">
-            <option value="books">Books</option>
-            <option value="customers">Customers</option>
-            <option value="books_rentals">Books Rentals</option>
-            <option value="requests_to_suppliers">Requests to suppliers</option>
-            <option value="suppliers">Suppliers</option>
-            <option value="libraries">Libraries</option>
-        </select>
         <form action="" method="post">
             <input type="text" placeholder="Enter the table name" name="table_name">
             <input type="submit" value="search" id="submit">
         </form> <br>
+        <script src="../js/admin.js"></script>
         <table id="table">
         <?php
             include('./connect.php');
@@ -131,6 +124,5 @@ include('protect.php');
         </table>
         <br>
     </fieldset> <br>
-    <script src="../js/admin.js"></script>
 </body>
 </html>
