@@ -15,6 +15,14 @@ include('protect.php');
     <a href='logout.php'> To end your session click here </a> <br> <br>
     <fieldset>
     <legend><h2> Register data </h2></legend>
+        <select name="select-table-update" id="select-table-update">
+            <option value="books">Books</option>
+            <option value="customers">Customers</option>
+            <option value="books_rentals">Books Rentals</option>
+            <option value="requests_to_suppliers">Requests to suppliers</option>
+            <option value="suppliers">Suppliers</option>
+            <option value="libraries">Libraries</option>
+        </select>
         <form action="insert.php" method="post">
             <div>
                 <label for="id">Id: </label>
@@ -99,5 +107,6 @@ include('protect.php');
         </table>
         <br>
     </fieldset> <br>
+    <script src="../js/admin.js"></script>
 </body>
 </html>
