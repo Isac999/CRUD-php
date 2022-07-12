@@ -16,23 +16,35 @@ function choice(param) {
     switch(param.target.value) {
         case 'books':
             if (param.target.id == 'select-table-create') {
+                console.log(param);
                 form.innerHTML = createBooks;
                 break;
             } else if (param.target.id == 'select-table-update') {
+                console.log(param);
                 form.innerHTML = updateBooks;
                 break;
             }
         case 'customers':
             if (param.target.id == 'select-table-create') {
+                console.log(param);
                 form.innerHTML = createCustomers;
                 break;
             } else if (param.target.id == 'select-table-update') {
+                console.log(param);
                 form.innerHTML = updateCustomers;
                 break;
             }
         case 'books_rentals':
-            //
-            break;
+            if (param.target.id == 'select-table-create') {
+                console.log(param);
+                form.innerHTML = createBooksRentals;
+                break;
+            } else if (param.target.id == 'select-table-update') {
+                console.log(param);
+                form.innertHTML = updateBooksRentals;
+                break;
+            }
+            
         case 'requests_to_suppliers':
             //
             break;
@@ -69,6 +81,18 @@ var createCustomers = `
     <input type="text" name="city" placeholder="Type here"> <br>
     <input type="submit" value="send">
 `
+var createBooksRentals = `
+    <label for="id">Id: </label>
+    <input type="number" name="id" placeholder="Type here" required> <br>
+    <label for="bookName">Book name: </label>
+    <input type="text" name="bookName" placeholder="Type here"> <br>
+    <label for="customerId">Customer Id: </label>
+    <input type="text" name="customerId" placeholder="Type here"> <br>
+    <label for="date">Date: </label>
+    <input type="date" name="date" placeholder="Type here"> <br>
+    <input type="submit" value="send">
+
+`
 var updateBooks = `
     <div>
         <label for="id-target">Id: </label>
@@ -100,3 +124,19 @@ var updateCustomers = `
     </div>
     <input type="submit" value="change">
     `
+var updateBooksRentals = `
+    <div>
+        <label for="id-target">Id: </label>
+        <input type="number" name="id-target" placeholder="Id target" required> <br>
+        <label for="select-opt"> Attribute you want to change: </label>
+        <select name="select-opt" id="select-css">
+            <option value="bookName">Book name</option>
+            <option value="bookId">Book id</option>
+            <option value="customerId">Customer id</option>
+            <option value="date">Date</option>
+        </select> <br>
+        <label for="new-value" required>Enter the new value: </label> 
+        <input type="text" name="new-value" placeholder="new attribute value"> <br>
+    </div>
+    <input type="submit" value="change">
+`
