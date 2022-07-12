@@ -75,7 +75,7 @@ include('protect.php');
             <option value="suppliers">Suppliers</option>
             <option value="libraries">Libraries</option>
         </select>
-        <form action="delete.php" method="post">
+        <form action="delete.php" method="post" id="delete-form">
             <div>
                 <label for="id-del">Id: </label>
                 <input type="number" name="id-del" placeholder="Target of deletion" required> <br>

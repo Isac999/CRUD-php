@@ -1,6 +1,13 @@
 const selectCreate = document.querySelector('#select-table-create');
 const selectUpdate = document.querySelector('#select-table-update');
+const formDelete = document.querySelector('#delete-form');
 
+formDelete.addEventListener('submit', (event) => {
+    let confirmation = confirm('Tem certeza que deseja remover do Banco de Dados?');
+    if (!confirmation) {
+        event.preventDefault();
+    }
+})
 selectCreate.addEventListener('change', (event) => {
     choice(event);
 })
@@ -62,7 +69,7 @@ function choice(param) {
                 break;
             }
         default:
-            console.log('Valor Defualt');
+            confirm('Default');
             break;
     }
 }
