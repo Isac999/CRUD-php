@@ -7,9 +7,66 @@ selectCreate.addEventListener('change', (event) => {
 selectUpdate.addEventListener('change', (event) => {
     choice(event);
 })
+
+function choice(param) {
+    const fieldset = param.target.parentElement;
+    const form = fieldset.querySelector('form');
+
+    switch(param.target.value) {
+        case 'books':
+            if (param.target.id == 'select-table-create') {
+                form.innerHTML = createBooks;
+                break;
+            } else {
+                form.innerHTML = updateBooks;
+                break;
+            }
+        case 'customers':
+            if (param.target.id == 'select-table-create') {
+                form.innerHTML = createCustomers;
+                break;
+            } else {
+                form.innerHTML = updateCustomers;
+                break;
+            }
+        case 'books_rentals':
+            if (param.target.id == 'select-table-create') {
+                form.innerHTML = createBooksRentals;
+                break;
+            } else {
+                form.innerHTML = updateBooksRentals;
+                break;
+            }     
+        case 'requests_to_suppliers':
+            if (param.target.id === 'select-table-create') {
+                form.innerHTML = createRequestsToSuppliers;
+                break 
+            } else {
+                form.innerHTML = updateRequestsToSuppliers;
+                break;
+            }
+        case 'suppliers':
+            if (param.target.id === 'select-table-create') {
+                form.innerHTML = createSuppliers;
+                break 
+            } else {
+                form.innerHTML = updateSuppliers;
+                break;
+            }
+        case 'libraries':
+            if (param.target.id === 'select-table-create') {
+                form.innerHTML = createLibrary;
+                break 
+            } else {
+                form.innerHTML = updateLibrary;
+                break;
+            }
+        default:
+            console.log('Valor Defualt');
+            break;
+    }
+}
 var createBooks = `
-    <label for="id">Id: </label>
-    <input type="number" name="id" placeholder="Type here" required> <br>
     <label for="name">Name: </label>
     <input type="text" name="name" placeholder="Type here"> <br>
     <label for="genre">Genre: </label>
@@ -59,6 +116,11 @@ var createSuppliers = `
     <input type="text" name="corporateName" placeholder="Type here"> <br>
     <label for="localization">Localization: </label>
     <input type="text" name="localization" placeholder="Type here"> <br>
+    <input type="submit" value="send">
+`
+var createLibrary = `
+    <label for="localization">Localization: </label>
+    <input type="text" name="corporateName" placeholder="Type here"> <br>
     <input type="submit" value="send">
 `
 var updateBooks = `
@@ -138,57 +200,16 @@ var updateSuppliers = `
     </div>
     <input type="submit" value="change">
 `
-
-function choice(param) {
-    const fieldset = param.target.parentElement;
-    const form = fieldset.querySelector('form');
-
-    switch(param.target.value) {
-        case 'books':
-            if (param.target.id == 'select-table-create') {
-                form.innerHTML = createBooks;
-                break;
-            } else {
-                form.innerHTML = updateBooks;
-                break;
-            }
-        case 'customers':
-            if (param.target.id == 'select-table-create') {
-                form.innerHTML = createCustomers;
-                break;
-            } else {
-                form.innerHTML = updateCustomers;
-                break;
-            }
-        case 'books_rentals':
-            if (param.target.id == 'select-table-create') {
-                form.innerHTML = createBooksRentals;
-                break;
-            } else {
-                form.innerHTML = updateBooksRentals;
-                break;
-            }     
-        case 'requests_to_suppliers':
-            if (param.target.id === 'select-table-create') {
-                form.innerHTML = createRequestsToSuppliers;
-                break 
-            } else {
-                form.innerHTML = updateRequestsToSuppliers;
-                break;
-            }
-        case 'suppliers':
-            if (param.target.id === 'select-table-create') {
-                form.innerHTML = createSuppliers;
-                break 
-            } else {
-                form.innerHTML = updateSuppliers;
-                break;
-            }
-            break;
-        case 'libraries':
-            break;
-        default:
-            console.log('Valor Defualt');
-            break;
-    }
-}
+var updateLibrary = `
+    <div>
+        <label for="id-target">Library id: </label>
+        <input type="number" name="id-target" placeholder="Id target" required> <br>
+        <label for="select-opt"> Attribute you want to change: </label>
+        <select name="select-opt" id="select-css">
+            <option value="localization">Localization</option>
+        </select> <br>
+        <label for="new-value" required>Enter the new value: </label> 
+        <input type="text" name="new-value" placeholder="new attribute value"> <br>
+    </div>
+    <input type="submit" value="change">
+`
