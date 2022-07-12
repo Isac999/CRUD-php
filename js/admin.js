@@ -75,6 +75,7 @@ var createBooks = `
     <input type="text" name="author" placeholder="Type here"> <br>
     <label for="library_id">Library id: </label>
     <input type="number" name="library_id" placeholder="Type here"> <br>
+    <input type="text" name="option" value="books" class="option-class" hidden>
     <input type="submit" value="send">
 `
 var createCustomers = `
@@ -86,6 +87,7 @@ var createCustomers = `
     <input type="date" name="birth" placeholder="Type here"> <br>
     <label for="city">City: </label>
     <input type="text" name="city" placeholder="Type here"> <br>
+    <input type="text" name="option" value="customers" class="option-class" hidden>
     <input type="submit" value="send">
 `
 var createBooksRentals = `
@@ -97,6 +99,7 @@ var createBooksRentals = `
     <input type="text" name="customerId" placeholder="Type here"> <br>
     <label for="date">Date: </label>
     <input type="date" name="date" placeholder="Type here"> <br>
+    <input type="text" name="option" value="booksRentals" class="option-class" hidden>
     <input type="submit" value="send">
 
 `
@@ -109,6 +112,7 @@ var createRequestsToSuppliers = `
     <input type="boolean" name="deliveryConfirmation" placeholder="Type here"> <br>
     <label for="corporateId">Corporate id: </label>
     <input type="checkbox" name="corporateId" placeholder="Type here"> <br>
+    <input type="text" name="option" value="requestsToSuppliers" class="option-class" hidden>
     <input type="submit" value="send">
 `
 var createSuppliers = `
@@ -116,11 +120,13 @@ var createSuppliers = `
     <input type="text" name="corporateName" placeholder="Type here"> <br>
     <label for="localization">Localization: </label>
     <input type="text" name="localization" placeholder="Type here"> <br>
+    <input type="text" name="option" value="suppliers" class="option-class" hidden>
     <input type="submit" value="send">
 `
 var createLibrary = `
     <label for="localization">Localization: </label>
     <input type="text" name="corporateName" placeholder="Type here"> <br>
+    <input type="text" name="option" value="library" class="option-class" hidden>
     <input type="submit" value="send">
 `
 var updateBooks = `
@@ -137,6 +143,7 @@ var updateBooks = `
         <label for="new-value" required>Enter the new value: </label> 
         <input type="text" name="new-value" placeholder="new attribute value"> <br>
     </div>
+    <input type="text" name="option" value="books" class="option-class" hidden>
     <input type="submit" value="change">
 `
 var updateCustomers = `
@@ -152,6 +159,7 @@ var updateCustomers = `
         <label for="new-value" required>Enter the new value: </label> 
         <input type="text" name="new-value" placeholder="new attribute value"> <br>
     </div>
+    <input type="text" name="option" value="customers" class="option-class" hidden>
     <input type="submit" value="change">
 `
 var updateBooksRentals = `
@@ -168,6 +176,7 @@ var updateBooksRentals = `
         <label for="new-value" required>Enter the new value: </label> 
         <input type="text" name="new-value" placeholder="new attribute value"> <br>
     </div>
+    <input type="text" name="option" value="booksRentals" class="option-class" hidden>
     <input type="submit" value="change">
 `
 var updateRequestsToSuppliers = `
@@ -184,6 +193,7 @@ var updateRequestsToSuppliers = `
         <label for="new-value" required>Enter the new value: </label> 
         <input type="text" name="new-value" placeholder="new attribute value"> <br>
     </div>
+    <input type="text" name="option" value="requestsToSuppliers" class="option-class" hidden>
     <input type="submit" value="change">
 `
 var updateSuppliers = `
@@ -198,6 +208,7 @@ var updateSuppliers = `
         <label for="new-value" required>Enter the new value: </label> 
         <input type="text" name="new-value" placeholder="new attribute value"> <br>
     </div>
+    <input type="text" name="option" value="suppliers" class="option-class" hidden>
     <input type="submit" value="change">
 `
 var updateLibrary = `
@@ -211,5 +222,6 @@ var updateLibrary = `
         <label for="new-value" required>Enter the new value: </label> 
         <input type="text" name="new-value" placeholder="new attribute value"> <br>
     </div>
+    <input type="text" name="option" value="library" class="option-class" hidden>
     <input type="submit" value="change">
 `

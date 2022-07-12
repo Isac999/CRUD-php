@@ -33,6 +33,7 @@ include('protect.php');
                 <input type="text" name="author" placeholder="Type here"> <br>
                 <label for="library_id">Library id: </label>
                 <input type="number" name="library_id" placeholder="Type here"> <br>
+                <input type="text" name="option" value="books" class="option-class" hidden>
                 <input type="submit" value="send">
             </div>
         </form>
