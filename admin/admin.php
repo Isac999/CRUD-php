@@ -19,7 +19,7 @@ include('protect.php');
             <option value="books">Books</option>
             <option value="customers">Customers</option>
             <option value="books_rentals">Books Rentals</option>
-            <option value="requests_to_suppliers">Requests to suppliers</option>
+            <option value="requests_to_suppliers">Requests to Suppliers</option>
             <option value="suppliers">Suppliers</option>
             <option value="libraries">Libraries</option>
         </select>
@@ -43,7 +43,7 @@ include('protect.php');
             <option value="books">Books</option>
             <option value="customers">Customers</option>
             <option value="books_rentals">Books Rentals</option>
-            <option value="requests_to_suppliers">Requests to suppliers</option>
+            <option value="requests_to_suppliers">Requests to Suppliers</option>
             <option value="suppliers">Suppliers</option>
             <option value="libraries">Libraries</option>
         </select>
@@ -70,7 +70,7 @@ include('protect.php');
             <option value="books">Books</option>
             <option value="customers">Customers</option>
             <option value="books_rentals">Books Rentals</option>
-            <option value="requests_to_suppliers">Requests to suppliers</option>
+            <option value="requests_to_suppliers">Requests to Suppliers</option>
             <option value="suppliers">Suppliers</option>
             <option value="libraries">Libraries</option>
         </select>

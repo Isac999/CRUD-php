@@ -36,12 +36,23 @@ var createBooksRentals = `
     <input type="number" name="id" placeholder="Type here" required> <br>
     <label for="bookName">Book name: </label>
     <input type="text" name="bookName" placeholder="Type here"> <br>
-    <label for="customerId">Customer Id: </label>
+    <label for="customerId">Customer id: </label>
     <input type="text" name="customerId" placeholder="Type here"> <br>
     <label for="date">Date: </label>
     <input type="date" name="date" placeholder="Type here"> <br>
     <input type="submit" value="send">
 
+`
+var createRequestsToSuppliers = `
+    <label for="bookId">Book id: </label>
+    <input type="number" name="bookId" placeholder="Type here"> <br>
+    <label for="requestDate">Request date: </label>
+    <input type="date" name="requestDate" placeholder="Type here"> <br>
+    <label for="deliveryConfirmation">Delivery confirmation: </label>
+    <input type="boolean" name="deliveryConfirmation" placeholder="Type here"> <br>
+    <label for="corporateId">Corporate id: </label>
+    <input type="checkbox" name="corporateId" placeholder="Type here"> <br>
+    <input type="submit" value="send">
 `
 var updateBooks = `
     <div>
@@ -61,7 +72,7 @@ var updateBooks = `
 `
 var updateCustomers = `
     <div>
-        <label for="id-target">Id: </label>
+        <label for="id-target">Client id: </label>
         <input type="number" name="id-target" placeholder="Id target" required> <br>
         <label for="select-opt"> Attribute you want to change: </label>
         <select name="select-opt" id="select-css">
@@ -90,6 +101,22 @@ var updateBooksRentals = `
     </div>
     <input type="submit" value="change">
 `
+var updateRequestsToSuppliers = `
+    <div>
+        <label for="id-target">Id request: </label>
+        <input type="number" name="id-target" placeholder="Id target" required> <br>
+        <label for="select-opt"> Attribute you want to change: </label>
+        <select name="select-opt" id="select-css">
+            <option value="bookId">Book id</option>
+            <option value="requestDate">Request date</option>
+            <option value="deliveryConfirmation">Delivery confirmation</option>
+            <option value="corporateId">Corporate Id</option>
+        </select> <br>
+        <label for="new-value" required>Enter the new value: </label> 
+        <input type="text" name="new-value" placeholder="new attribute value"> <br>
+    </div>
+    <input type="submit" value="change">
+`
 
 function choice(param) {
     const fieldset = param.target.parentElement;
@@ -100,7 +127,7 @@ function choice(param) {
             if (param.target.id == 'select-table-create') {
                 form.innerHTML = createBooks;
                 break;
-            } else if (param.target.id == 'select-table-update') {
+            } else {
                 form.innerHTML = updateBooks;
                 break;
             }
@@ -108,7 +135,7 @@ function choice(param) {
             if (param.target.id == 'select-table-create') {
                 form.innerHTML = createCustomers;
                 break;
-            } else if (param.target.id == 'select-table-update') {
+            } else {
                 form.innerHTML = updateCustomers;
                 break;
             }
@@ -116,13 +143,18 @@ function choice(param) {
             if (param.target.id == 'select-table-create') {
                 form.innerHTML = createBooksRentals;
                 break;
-            } else if (param.target.id == 'select-table-update') {
+            } else {
                 form.innerHTML = updateBooksRentals;
                 break;
-            }
-            
+            }     
         case 'requests_to_suppliers':
-            break;
+            if (param.target.id === 'select-table-create') {
+                form.innerHTML = createRequestsToSuppliers;
+                break 
+            } else {
+                form.innerHTML = updateRequestsToSuppliers;
+                break;
+            }
         case 'suppliers':
             break;
         case 'libraries':
