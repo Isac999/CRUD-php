@@ -25,8 +25,6 @@ include('protect.php');
         </select>
         <form action="insert.php" method="post">
             <div>
-                <label for="id">Id: </label>
-                <input type="number" name="id" placeholder="Type here" required> <br>
                 <label for="name">Name: </label>
                 <input type="text" name="name" placeholder="Type here"> <br>
                 <label for="genre">Genre: </label>
@@ -84,13 +82,15 @@ include('protect.php');
             <input type="submit" value="delete">
         </form>
     </fieldset>
+
+    <script src="../js/admin.js"></script>
+    
     <fieldset>
         <legend><h2> Query field </h2></legend>
         <form action="" method="post">
             <input type="text" placeholder="Enter the table name" name="table_name">
             <input type="submit" value="search" id="submit">
         </form> <br>
-        <script src="../js/admin.js"></script>
         <table id="table">
         <?php
             include('./connect.php');

@@ -7,56 +7,6 @@ selectCreate.addEventListener('change', (event) => {
 selectUpdate.addEventListener('change', (event) => {
     choice(event);
 })
-
-
-function choice(param) {
-    const fieldset = param.target.parentElement;
-    const form = fieldset.querySelector('form');
-
-    switch(param.target.value) {
-        case 'books':
-            if (param.target.id == 'select-table-create') {
-                console.log(param);
-                form.innerHTML = createBooks;
-                break;
-            } else if (param.target.id == 'select-table-update') {
-                console.log(param);
-                form.innerHTML = updateBooks;
-                break;
-            }
-        case 'customers':
-            if (param.target.id == 'select-table-create') {
-                console.log(param);
-                form.innerHTML = createCustomers;
-                break;
-            } else if (param.target.id == 'select-table-update') {
-                console.log(param);
-                form.innerHTML = updateCustomers;
-                break;
-            }
-        case 'books_rentals':
-            if (param.target.id == 'select-table-create') {
-                console.log(param);
-                form.innerHTML = createBooksRentals;
-                break;
-            } else if (param.target.id == 'select-table-update') {
-                console.log(param);
-                form.innertHTML = updateBooksRentals;
-                break;
-            }
-            
-        case 'requests_to_suppliers':
-            //
-            break;
-        case 'suppliers':
-            //
-            break;
-        case 'libraries':
-            //
-            break;
-    }
-}
-
 var createBooks = `
     <label for="id">Id: </label>
     <input type="number" name="id" placeholder="Type here" required> <br>
@@ -108,7 +58,7 @@ var updateBooks = `
         <input type="text" name="new-value" placeholder="new attribute value"> <br>
     </div>
     <input type="submit" value="change">
-    `
+`
 var updateCustomers = `
     <div>
         <label for="id-target">Id: </label>
@@ -123,7 +73,7 @@ var updateCustomers = `
         <input type="text" name="new-value" placeholder="new attribute value"> <br>
     </div>
     <input type="submit" value="change">
-    `
+`
 var updateBooksRentals = `
     <div>
         <label for="id-target">Id: </label>
@@ -140,3 +90,45 @@ var updateBooksRentals = `
     </div>
     <input type="submit" value="change">
 `
+
+function choice(param) {
+    const fieldset = param.target.parentElement;
+    const form = fieldset.querySelector('form');
+
+    switch(param.target.value) {
+        case 'books':
+            if (param.target.id == 'select-table-create') {
+                form.innerHTML = createBooks;
+                break;
+            } else if (param.target.id == 'select-table-update') {
+                form.innerHTML = updateBooks;
+                break;
+            }
+        case 'customers':
+            if (param.target.id == 'select-table-create') {
+                form.innerHTML = createCustomers;
+                break;
+            } else if (param.target.id == 'select-table-update') {
+                form.innerHTML = updateCustomers;
+                break;
+            }
+        case 'books_rentals':
+            if (param.target.id == 'select-table-create') {
+                form.innerHTML = createBooksRentals;
+                break;
+            } else if (param.target.id == 'select-table-update') {
+                form.innerHTML = updateBooksRentals;
+                break;
+            }
+            
+        case 'requests_to_suppliers':
+            break;
+        case 'suppliers':
+            break;
+        case 'libraries':
+            break;
+        default:
+            console.log('Valor Defualt');
+            break;
+    }
+}
