@@ -54,6 +54,13 @@ var createRequestsToSuppliers = `
     <input type="checkbox" name="corporateId" placeholder="Type here"> <br>
     <input type="submit" value="send">
 `
+var createSuppliers = `
+    <label for="corporateName">Corporate name: </label>
+    <input type="text" name="corporateName" placeholder="Type here"> <br>
+    <label for="localization">Localization: </label>
+    <input type="text" name="localization" placeholder="Type here"> <br>
+    <input type="submit" value="send">
+`
 var updateBooks = `
     <div>
         <label for="id-target">Id: </label>
@@ -117,6 +124,20 @@ var updateRequestsToSuppliers = `
     </div>
     <input type="submit" value="change">
 `
+var updateSuppliers = `
+    <div>
+        <label for="id-target">Id supplier: </label>
+        <input type="number" name="id-target" placeholder="Id target" required> <br>
+        <label for="select-opt"> Attribute you want to change: </label>
+        <select name="select-opt" id="select-css">
+            <option value="corporateName">Corporate name</option>
+            <option value="localization">Localization</option>
+        </select> <br>
+        <label for="new-value" required>Enter the new value: </label> 
+        <input type="text" name="new-value" placeholder="new attribute value"> <br>
+    </div>
+    <input type="submit" value="change">
+`
 
 function choice(param) {
     const fieldset = param.target.parentElement;
@@ -156,6 +177,13 @@ function choice(param) {
                 break;
             }
         case 'suppliers':
+            if (param.target.id === 'select-table-create') {
+                form.innerHTML = createSuppliers;
+                break 
+            } else {
+                form.innerHTML = updateSuppliers;
+                break;
+            }
             break;
         case 'libraries':
             break;
