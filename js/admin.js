@@ -86,8 +86,6 @@ var createBooks = `
     <input type="submit" value="send">
 `
 var createCustomers = `
-    <label for="id">Id: </label>
-    <input type="number" name="id" placeholder="Type here" required> <br>
     <label for="name">Name: </label>
     <input type="text" name="name" placeholder="Type here"> <br>
     <label for="birth">Birth: </label>
@@ -98,15 +96,13 @@ var createCustomers = `
     <input type="submit" value="send">
 `
 var createBooksRentals = `
-    <label for="id">Id: </label>
-    <input type="number" name="id" placeholder="Type here" required> <br>
-    <label for="bookName">Book name: </label>
-    <input type="text" name="bookName" placeholder="Type here"> <br>
+    <label for="bookId">Book id: </label>
+    <input type="number" name="bookId" placeholder="Type here"> <br>
     <label for="customerId">Customer id: </label>
     <input type="text" name="customerId" placeholder="Type here"> <br>
     <label for="date">Date: </label>
     <input type="date" name="date" placeholder="Type here"> <br>
-    <input type="text" name="option" value="booksRentals" class="option-class" hidden>
+    <input type="text" name="option" value="books_rentals" class="option-class" hidden>
     <input type="submit" value="send">
 
 `
@@ -116,10 +112,10 @@ var createRequestsToSuppliers = `
     <label for="requestDate">Request date: </label>
     <input type="date" name="requestDate" placeholder="Type here"> <br>
     <label for="deliveryConfirmation">Delivery confirmation: </label>
-    <input type="boolean" name="deliveryConfirmation" placeholder="Type here"> <br>
+    <input type="checkbox" name="deliveryConfirmation"> <br>
     <label for="corporateId">Corporate id: </label>
-    <input type="checkbox" name="corporateId" placeholder="Type here"> <br>
-    <input type="text" name="option" value="requestsToSuppliers" class="option-class" hidden>
+    <input type="number" name="corporateId" placeholder="Type here"> <br>
+    <input type="text" name="option" value="requests_to_suppliers" class="option-class" hidden>
     <input type="submit" value="send">
 `
 var createSuppliers = `
@@ -132,7 +128,7 @@ var createSuppliers = `
 `
 var createLibrary = `
     <label for="localization">Localization: </label>
-    <input type="text" name="corporateName" placeholder="Type here"> <br>
+    <input type="text" name="localization" placeholder="Type here"> <br>
     <input type="text" name="option" value="library" class="option-class" hidden>
     <input type="submit" value="send">
 `
