@@ -2,6 +2,18 @@ const selectCreate = document.querySelector('#select-table-create');
 const selectUpdate = document.querySelector('#select-table-update');
 const formDelete = document.querySelector('#delete-form');
 
+function newInput() {
+    const elementTarget = document.querySelector('#select-css');
+    if (elementTarget.value == 'birth' || elementTarget.value == 'date' || elementTarget.value == 'request_date') {
+        const newValue = document.getElementsByName('new-value');
+        newValue[0].type = "date";
+    } else {
+        const newValue = document.getElementsByName('new-value');
+        newValue[0].type = "text";
+    }
+}
+
+
 formDelete.addEventListener('submit', (event) => {
     let confirmation = confirm('Tem certeza que deseja remover do Banco de Dados?');
     if (!confirmation) {
@@ -145,6 +157,7 @@ var updateBooks = `
         </select> <br>
         <label for="new-value" required>Enter the new value: </label> 
         <input type="text" name="new-value" placeholder="new attribute value"> <br>
+        <input type="text" name="option" value="books" class="option-class" hidden>
     </div>
     <input type="text" name="option" value="books" class="option-class" hidden>
     <input type="submit" value="change">
@@ -154,13 +167,14 @@ var updateCustomers = `
         <label for="id-target">Client id: </label>
         <input type="number" name="id-target" placeholder="Id target" required> <br>
         <label for="select-opt"> Attribute you want to change: </label>
-        <select name="select-opt" id="select-css">
+        <select name="select-opt" id="select-css" onchange="newInput()">
             <option value="name">Name</option>
             <option value="birth">Birth</option>
             <option value="city">City</option>
         </select> <br>
         <label for="new-value" required>Enter the new value: </label> 
         <input type="text" name="new-value" placeholder="new attribute value"> <br>
+        <input type="text" name="option" value="customers" class="option-class" hidden>
     </div>
     <input type="text" name="option" value="customers" class="option-class" hidden>
     <input type="submit" value="change">
@@ -170,16 +184,15 @@ var updateBooksRentals = `
         <label for="id-target">Id: </label>
         <input type="number" name="id-target" placeholder="Id target" required> <br>
         <label for="select-opt"> Attribute you want to change: </label>
-        <select name="select-opt" id="select-css">
-            <option value="bookName">Book name</option>
-            <option value="bookId">Book id</option>
-            <option value="customerId">Customer id</option>
+        <select name="select-opt" id="select-css" onchange="newInput()">
+            <option value="book_id">Book id</option>
+            <option value="customer_id">Customer id</option>
             <option value="date">Date</option>
         </select> <br>
         <label for="new-value" required>Enter the new value: </label> 
         <input type="text" name="new-value" placeholder="new attribute value"> <br>
+        <input type="text" name="option" value="books_rentals" class="option-class" hidden>
     </div>
-    <input type="text" name="option" value="booksRentals" class="option-class" hidden>
     <input type="submit" value="change">
 `
 var updateRequestsToSuppliers = `
@@ -187,16 +200,16 @@ var updateRequestsToSuppliers = `
         <label for="id-target">Id request: </label>
         <input type="number" name="id-target" placeholder="Id target" required> <br>
         <label for="select-opt"> Attribute you want to change: </label>
-        <select name="select-opt" id="select-css">
-            <option value="bookId">Book id</option>
-            <option value="requestDate">Request date</option>
-            <option value="deliveryConfirmation">Delivery confirmation</option>
-            <option value="corporateId">Corporate Id</option>
+        <select name="select-opt" id="select-css" onchange="newInput()">
+            <option value="book_id">Book id</option>
+            <option value="request_date">Request date</option>
+            <option value="delivery_confirmation">Delivery confirmation</option>
+            <option value="corporate_id">Corporate Id</option>
         </select> <br>
         <label for="new-value" required>Enter the new value: </label> 
         <input type="text" name="new-value" placeholder="new attribute value"> <br>
+        <input type="text" name="option" value="requests_to_suppliers" class="option-class" hidden>
     </div>
-    <input type="text" name="option" value="requestsToSuppliers" class="option-class" hidden>
     <input type="submit" value="change">
 `
 var updateSuppliers = `
@@ -205,13 +218,13 @@ var updateSuppliers = `
         <input type="number" name="id-target" placeholder="Id target" required> <br>
         <label for="select-opt"> Attribute you want to change: </label>
         <select name="select-opt" id="select-css">
-            <option value="corporateName">Corporate name</option>
+            <option value="corporate_name">Corporate name</option>
             <option value="localization">Localization</option>
         </select> <br>
         <label for="new-value" required>Enter the new value: </label> 
         <input type="text" name="new-value" placeholder="new attribute value"> <br>
+        <input type="text" name="option" value="suppliers" class="option-class" hidden>
     </div>
-    <input type="text" name="option" value="suppliers" class="option-class" hidden>
     <input type="submit" value="change">
 `
 var updateLibrary = `
@@ -224,7 +237,7 @@ var updateLibrary = `
         </select> <br>
         <label for="new-value" required>Enter the new value: </label> 
         <input type="text" name="new-value" placeholder="new attribute value"> <br>
+        <input type="text" name="option" value="libraries" class="option-class" hidden>
     </div>
-    <input type="text" name="option" value="library" class="option-class" hidden>
     <input type="submit" value="change">
 `
