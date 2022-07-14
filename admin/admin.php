@@ -61,6 +61,7 @@ include('protect.php');
                 </select> <br>
                 <label for="new-value" required>Enter the new value: </label> 
                 <input type="text" name="new-value" placeholder="new attribute value"> <br>
+                <input type="text" name="option" value="books" class="option-class" hidden>
             </div>
             <input type="submit" value="change">
         </form>
