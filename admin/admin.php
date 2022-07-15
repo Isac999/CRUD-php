@@ -68,15 +68,15 @@ include('protect.php');
     </fieldset>
     <fieldset>
     <legend><h2> Delete data </h2></legend>
-        <select name="select-table-delete" id="select-table-delete">
-            <option value="books">Books</option>
-            <option value="customers">Customers</option>
-            <option value="books_rentals">Books Rentals</option>
-            <option value="requests_to_suppliers">Requests to Suppliers</option>
-            <option value="suppliers">Suppliers</option>
-            <option value="libraries">Libraries</option>
-        </select>
         <form action="delete.php" method="post" id="delete-form">
+            <select name="select-delete" id="select-delete">
+                <option value="books">Books</option>
+                <option value="customers">Customers</option>
+                <option value="books_rentals">Books Rentals</option>
+                <option value="requests_to_suppliers">Requests to Suppliers</option>
+                <option value="suppliers">Suppliers</option>
+                <option value="libraries">Libraries</option>
+            </select>
             <div>
                 <label for="id-del">Id: </label>
                 <input type="number" name="id-del" placeholder="Target of deletion" required> <br>

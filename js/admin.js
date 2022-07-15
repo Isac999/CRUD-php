@@ -13,7 +13,6 @@ function newInput() {
     }
 }
 
-
 formDelete.addEventListener('submit', (event) => {
     let confirmation = confirm('Tem certeza que deseja remover do Banco de Dados?');
     if (!confirmation) {
