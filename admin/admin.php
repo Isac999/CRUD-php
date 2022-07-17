@@ -1,130 +1,67 @@
-<?php 
-include('protect.php');
-?>
+<?php include('protect.php'); ?>
+
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt0br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Admin </title>
-    <link rel="stylesheet" href="../css/admin.css">
+    <link  rel="stylesheet"  href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"  integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"  crossorigin="anonymous">
+
 </head>
 <body>
-    <h1> Welcome to the admin panel! </h1>
-    <a href='logout.php'> To end your session click here </a> <br> <br>
-    <fieldset>
-    <legend><h2> Register data </h2></legend>
-        <select name="select-table-create" id="select-table-create">
-            <option value="books">Books</option>
-            <option value="customers">Customers</option>
-            <option value="books_rentals">Books Rentals</option>
-            <option value="requests_to_suppliers">Requests to Suppliers</option>
-            <option value="suppliers">Suppliers</option>
-            <option value="libraries">Libraries</option>
-        </select>
-        <form action="insert.php" method="post">
-            <div>
-                <label for="name">Name: </label>
-                <input type="text" name="name" placeholder="Type here"> <br>
-                <label for="genre">Genre: </label>
-                <input type="text" name="genre" placeholder="Type here"> <br>
-                <label for="author">Author: </label>
-                <input type="text" name="author" placeholder="Type here"> <br>
-                <label for="library_id">Library id: </label>
-                <input type="number" name="library_id" placeholder="Type here"> <br>
-                <input type="text" name="option" value="books" class="option-class" hidden>
-                <input type="submit" value="send">
-            </div>
-        </form>
-    </fieldset>
-    <fieldset>
-        <legend><h2> Update data </h2></legend>
-        <select name="select-table-update" id="select-table-update">
-            <option value="books">Books</option>
-            <option value="customers">Customers</option>
-            <option value="books_rentals">Books Rentals</option>
-            <option value="requests_to_suppliers">Requests to Suppliers</option>
-            <option value="suppliers">Suppliers</option>
-            <option value="libraries">Libraries</option>
-        </select>
-        <form action="update.php" method="post">
-            <div>
-                <label for="id-target">Id: </label>
-                <input type="number" name="id-target" placeholder="Id target" required> <br>
-                <label for="select-opt"> Attribute you want to change: </label>
-                <select name="select-opt" id="select-css">
-                    <option value="name">Name</option>
-                    <option value="genre">Genre</option>
-                    <option value="author">Author</option>
-                    <option value="library_id">Library id</option>
-                </select> <br>
-                <label for="new-value" required>Enter the new value: </label> 
-                <input type="text" name="new-value" placeholder="new attribute value"> <br>
-                <input type="text" name="option" value="books" class="option-class" hidden>
-            </div>
-            <input type="submit" value="change">
-        </form>
-    </fieldset>
-    <fieldset>
-    <legend><h2> Delete data </h2></legend>
-        <form action="delete.php" method="post" id="delete-form">
-            <select name="select-delete" id="select-delete">
-                <option value="books">Books</option>
-                <option value="customers">Customers</option>
-                <option value="books_rentals">Books Rentals</option>
-                <option value="requests_to_suppliers">Requests to Suppliers</option>
-                <option value="suppliers">Suppliers</option>
-                <option value="libraries">Libraries</option>
-            </select>
-            <div>
-                <label for="id-del">Id: </label>
-                <input type="number" name="id-del" placeholder="Target of deletion" required> <br>
-            </div>
-            <input type="submit" value="delete">
-        </form>
-    </fieldset>
+    <div class="container">
+        <h1> Welcome to the admin panel! </h1>
+        <a href='logout.php'> To end your session click here </a> <br> <br>
 
-    <script src="../js/admin.js"></script>
-    
-    <fieldset>
-        <legend><h2> Query field </h2></legend>
-        <form action="" method="post">
-            <input type="text" placeholder="Enter the table name" name="table_name">
-            <input type="submit" value="search" id="submit">
-        </form> <br>
-        <table id="table">
-        <?php
-            include('./connect.php');
-            $table_name = $_POST['table_name'];
-
-            $table = $mysqli->real_escape_string($table_name);
-            $exec = "SELECT * FROM $table";
-            $query = $mysqli->query($exec) or die('Falha ao executar consulta!'); 
-            
-            $columns = array();
-            $exec_columns = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = 'library' AND TABLE_NAME = '$table'";
-            $selectColumns = $mysqli->query($exec_columns) or die('Erro ao consultar colunas');
-            while ($column = $selectColumns->fetch_assoc()) {
-                array_push($columns, $column['COLUMN_NAME']);
-            }
-            //Cabeçalho (nome das colunas)
-            echo "<tr>";
-            foreach ($columns as $column) {
-                echo "<th>".$column."</th>";
-            }
-            echo "</tr>";
-            //Dados da consulta
-            while ($data = mysqli_fetch_assoc($query)) {
-                echo "<tr>";
-                foreach ($columns as $column) {
-                    echo "<td>".$data[$column]."</td>";
-                }
-                echo "</tr>";
-            }
-            ?>
-        </table>
-        <br>
-    </fieldset> <br>
+        <div class="row justify-content-center">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <?php 
+                            include('./connect.php');
+                            //$table_name = $_POST['table_name'];
+                            $table_name = 'books';
+                            $table = $mysqli->real_escape_string($table_name);
+                            $exec = "SELECT * FROM $table";
+                            $query = $mysqli->query($exec) or die('Falha ao executar consulta!'); 
+                            
+                            $columns = array();
+                            $exec_columns = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = 'library' AND TABLE_NAME = '$table'";
+                            $selectColumns = $mysqli->query($exec_columns) or die('Erro ao consultar colunas');
+                            while ($column = $selectColumns->fetch_assoc()) {
+                                array_push($columns, $column['COLUMN_NAME']);
+                            }
+                            //Cabeçalho (nome das colunas)
+                            //echo "<tr>";
+                            foreach ($columns as $column) {
+                                echo "<th>".$column."</th>";
+                            }
+                            //echo "</tr>";
+                        ?>
+                        <th colspan="2">Action</th>
+                    </tr>
+                </thead>
+                <?php 
+                    //Dados da consulta
+                    while ($data = mysqli_fetch_assoc($query)) {
+                        echo "<tr>";
+                        foreach ($columns as $column) {
+                            echo "<td>".$data[$column]."</td>";
+                        }
+                        echo "<td>";
+                        echo "<button class='btn btn-info' id='info-".$data["id"]."'>Edit</button>";
+                        echo "<button class='btn btn-danger ml-1' id='danger-".$data["id"]."'>Delete</button>";
+                        echo "</td>";
+                        echo "</tr>";
+                    }
+                ?>
+            </table>
+        </div>
+    </div>
+    <script  src="https://code.jquery.com/jquery-3.3.1.slim.min.js"  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"  crossorigin="anonymous"></script>
+    <script  src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"  integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"  crossorigin="anonymous"></script>
+    <script  src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"  integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"  crossorigin="anonymous"></script>
 </body>
 </html>
