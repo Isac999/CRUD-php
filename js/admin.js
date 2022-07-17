@@ -1,13 +1,13 @@
-/*
-const optionQuery = document.querySelector('#option-query');
-console.log(optionQuery);
-
-let data = {data: 'books'};
-
-fetch("http://127.0.0.1/CRUD/admin/admin.php", {
-  method: "GET", 
-  body: JSON.stringify(data)
-}).then(res => {
-  console.log("Promise resolved", res);
-});
-*/
+function change(element) {
+    const parent = element.parentElement;
+    const childrenTarget = parent.childNodes;
+    childrenTarget.forEach((item) => {
+        let content = item.innerText;
+        if (item.className != 'no-replace') {
+            item.innerHTML = "<input type='text' class='form-control' value='"+content+"'>";
+        } else {
+            element.firstChild.setAttribute('class', 'btn btn-warning');
+            element.firstChild.innerText = 'Change';
+        }
+    })
+}
