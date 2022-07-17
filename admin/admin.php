@@ -12,17 +12,36 @@
 </head>
 <body>
     <div class="container">
-        <h1> Welcome to the admin panel! </h1>
-        <a href='logout.php'> To end your session click here </a> <br> <br>
-
+        <div class="text-center">
+            <h1> Welcome to the admin panel! </h1>
+            <a href='logout.php'> To end your session click here </a> <br> <br>
+            <form action="" method="POST">
+                <div class="mb-3">
+                    <select autofocus name="table-name" id="option-query" class="form-control mb-2 font-weight-bold w-25 d-inline">
+                            <option value="books" hidden>Choose the table</option>
+                            <option value="books">Books</option>
+                            <option value="customers">Customers</option>
+                            <option value="books_rentals">Books Rentals</option>
+                            <option value="requests_to_suppliers">Requests to Suppliers</option>
+                            <option value="suppliers">Suppliers</option>
+                            <option value="libraries">Libraries</option>
+                    </select>
+                    <input type="submit" class="btn btn-info" value="Search">
+                </div>
+            </form>
+            <script src="../js/admin.js"></script>
+        </div>
         <div class="row justify-content-center">
             <table class="table">
                 <thead>
                     <tr>
                         <?php 
                             include('./connect.php');
-                            //$table_name = $_POST['table_name'];
-                            $table_name = 'books';
+                            $table_name = $_POST['table-name'];
+                            if (empty($table_name)) {
+                                $table_name = 'books';
+                            }
+    
                             $table = $mysqli->real_escape_string($table_name);
                             $exec = "SELECT * FROM $table";
                             $query = $mysqli->query($exec) or die('Falha ao executar consulta!'); 
@@ -36,7 +55,7 @@
                             //Cabeçalho (nome das colunas)
                             //echo "<tr>";
                             foreach ($columns as $column) {
-                                echo "<th>".$column."</th>";
+                                echo "<th class='text-capitalize'>".$column."</th>";
                             }
                             //echo "</tr>";
                         ?>

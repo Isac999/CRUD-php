@@ -81,7 +81,7 @@
         </form>
     </fieldset>
 
-    <script src="../js/admin.js"></script>
+    
     
     <fieldset>
         <legend><h2> Query field </h2></legend>
