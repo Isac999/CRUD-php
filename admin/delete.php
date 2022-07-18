@@ -1,11 +1,13 @@
 <?php 
-
 include('./connect.php');
-header('Location: ./admin.php');
+//header('Location: ./admin.php');
 
-$option = $_POST['select-delete'];
-$id_del = $_POST['id-del'];
+$data = file_get_contents('php://input');
+$data = str_replace(['{', '}', '"', ':', 'id'], "", $data);
+$arrayData = explode("-", $data);
+print_r($arrayData);
 
-$exec = "DELETE FROM `$option` WHERE id = '$id_del'";
+$exec = "DELETE FROM `$arrayData[1]` WHERE id = '$arrayData[0]'";
 $query = $mysqli->query($exec);
+
 ?>

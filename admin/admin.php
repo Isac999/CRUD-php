@@ -12,7 +12,7 @@
 <body>
     <div class="container">
         <div class="text-center">
-            <h1> Welcome to the admin panel! </h1>
+            <h1 class="mt-1"> Welcome to the admin panel! </h1>
             <a href='logout.php'> To end your session click here </a> <br> <br>
             <form action="" method="POST">
                 <div class="mb-3">
@@ -69,7 +69,7 @@
                         }
                         echo "<td class='no-replace'>";
                         echo "<button onclick='change(this.parentElement)' class='btn btn-info' id='".$table_name."'>Edit</button>";
-                        echo "<button class='btn btn-danger ml-1' id='".$table_name."'>Delete</button>";
+                        echo "<button onclick='del(this.id)' class='btn btn-danger ml-1' id='".$data["id"]."-".$table_name."'>Delete</button>";
                         echo "</td>";
                         echo "</tr>";
                     }

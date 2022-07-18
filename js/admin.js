@@ -14,6 +14,24 @@ function change(element) {
     })
 }
 
+function del(id) {
+    let confirmation = confirm("Tem certeza que deseja excluir o registro: " +id +" ?");
+    if (confirmation) {
+        const body = {
+            "id": id
+        }
+        let request = new XMLHttpRequest();
+        request.open("POST", "http://127.0.0.1/CRUD/admin/delete.php", true);
+        request.setRequestHeader("Content-Type", "application/json");
+        request.send(JSON.stringify(body)); 
+    
+        request.onload = function() {
+            console.log(this.responseText);
+        }
+        return request.responseText;
+    }
+}
+
 function undoChange(element) {
     let listValues = [];
     element.setAttribute('class', 'btn btn-info');
