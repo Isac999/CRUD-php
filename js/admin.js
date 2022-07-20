@@ -58,6 +58,7 @@ function createBtn(len) {
     last.appendChild(td);
     last.lastChild.appendChild(button);
 }
+
 function undoBtn(parent) {
     let listValues = []
     const masterNode = parent.parentElement;
@@ -78,9 +79,10 @@ function undoBtn(parent) {
             item.appendChild(newDelete);
         }
     })
-    //document.querySelector('tbody tr td:last-of-type');
-    console.log(listValues);
+    const tableName = document.querySelector('tbody tr td:last-of-type button').id;
+    createData(tableName, listValues);
 }
+
 function undoChange(element) {
     let listValues = [];
     element.setAttribute('class', 'btn btn-info');
@@ -106,6 +108,22 @@ function update(tableName, listValues) {
     }
     let request = new XMLHttpRequest();
     request.open("POST", "http://127.0.0.1/CRUD/admin/update.php", true);
+    request.setRequestHeader("Content-Type", "application/json");
+    request.send(JSON.stringify(body)); 
+
+    request.onload = function() {
+        console.log(this.responseText);
+    }
+    return request.responseText;
+}
+
+function createData(tableName, listValues) {
+    const body = { 
+        "table" : tableName, 
+        "arrayValues" : listValues
+    }
+    let request = new XMLHttpRequest();
+    request.open("POST", "http://127.0.0.1/CRUD/admin/insert.php", true);
     request.setRequestHeader("Content-Type", "application/json");
     request.send(JSON.stringify(body)); 
 

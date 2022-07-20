@@ -1,61 +1,50 @@
 <?php 
-
 include('./connect.php');
-header('Location: ./admin.php');
+//header('Location: ./admin.php');
 
-$option = $_POST['option'];
+/*$option = $_POST['option'];
 
-switch($option) {
+
+}
+*/
+
+$data = file_get_contents('php://input');
+$data = str_replace([":", "table", "}", "{"], "", $data);
+$list = explode("arrayValues", $data);
+
+$table_name = str_replace(['"', ','], "", $list[0]);
+$listData = str_replace(['"', '[', ']'], "", $list[1]);
+$listData = explode(',', $listData);
+
+echo $table_name;
+print_r($listData);
+
+switch($table_name) {
     case 'books':
-        $name = $_POST['name'];
-        $genre = $_POST['genre'];
-        $author = $_POST['author'];
-        $library_id = $_POST['library_id'];
-
-        $exec = "INSERT INTO `books` (`name`, `genre`, `author`, `library_id`) VALUES ('$name', '$genre', '$author', '$library_id')";
+        $exec = "INSERT INTO `books` (`id`, `name`, `genre`, `author`, `library_id`) VALUES ('$listData[0]', '$listData[1]', '$listData[2]', '$listData[3]', '$listData[4]')";
         $query = $mysqli->query($exec) or die('Falha ao executar inserção!');
-        echo $exec;
         break;
     case 'customers':
-        $name = $_POST['name'];
-        $birth = $_POST['birth'];
-        $city = $_POST['city'];
-
-        $exec = "INSERT INTO `customers` (`name`, `birth`, `city`) VALUES ('$name', '$birth', '$city')";
+        $exec = "INSERT INTO `customers` (`id`, `name`, `birth`, `city`) VALUES ('$listData[0]', '$listData[1]', '$listData[2]', '$listData[3]')";
         $query = $mysqli->query($exec) or die('Falha ao executar inserção!');
         break;
     case 'books_rentals':
-        $book_id = $_POST['bookId'];
-        $customer_id = $_POST['customerId'];
-        $date = $_POST['date'];
-
-        $exec = "INSERT INTO `books_rentals` (`book_id`, `customer_id`, `date`) VALUES ('$book_id', '$customer_id', '$date')";
+        $exec = "INSERT INTO `books_rentals` (`id`, `book_id`, `customer_id`, `date`) VALUES ('$listData[0]', '$listData[1]', '$listData[2]', '$listData[3]')";
         $query = $mysqli->query($exec) or die('Falha ao executar inserção!');
         break;
     case 'requests_to_suppliers':
-        $book_id = $_POST['bookId'];
-        $request_date = $_POST['requestDate'];
-        $delivery_confirmation = $_POST['deliveryConfirmation'] == 'on' ? 1 : 0;
-        $corporate_id = $_POST['corporateId'];
-
-        $exec = "INSERT INTO `requests_to_suppliers` (`book_id`, `request_date`, `delivery_confirmation`, `corporate_id`) VALUES ('$book_id', '$request_date', '$delivery_confirmation', '$corporate_id')";
+        $exec = "INSERT INTO `requests_to_suppliers` (`id`, `book_id`, `request_date`, `delivery_confirmation`, `corporate_id`) VALUES ('$listData[0]', '$listData[1]', '$listData[2]', '$listData[3]', '$listData[4]')";
         $query = $mysqli->query($exec) or die('Falha ao executar inserção!');
         break;
     case 'suppliers':
-        $corporate_name = $_POST['corporateName'];
-        $localization = $_POST['localization'];
-
-        $exec = "INSERT INTO `suppliers` (`corporate_name`, `localization`) VALUES ('$corporate_name', '$localization')";
+        $exec = "INSERT INTO `suppliers` (`id`, `corporate_name`, `localization`) VALUES ('$listData[0]', '$listData[1]', '$listData[2]')";
         $query = $mysqli->query($exec) or die('Falha ao executar inserção!');
         break;
-    case 'library':
-        $localization = $_POST['localization'];
-
-        $exec = "INSERT INTO `libraries` (`localization`) VALUES ('$localization')";
+    case 'libraries':
+        $exec = "INSERT INTO `libraries` (`id`, `localization`) VALUES ('$listData[0]', '$listData[1]')";
         $query = $mysqli->query($exec) or die('Falha ao executar inserção!');
         break;
     default: 
         echo 'Falha no switch';
 }
-
 ?>
