@@ -10,7 +10,32 @@
     <link  rel="stylesheet"  href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"  integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"  crossorigin="anonymous">
 </head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-light bg-dark fixed-top">
     <div class="container">
+        <a class="navbar-brand text-white font-weight-bold" href="#">Start Bootstrap</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item active">
+            <a class="nav-link text-white" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link text-white" href="#">About</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link text-white" href="#">Services</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link text-white" href="#">Contact</a>
+            </li>
+        </ul>
+        </div>
+    </div>
+    </nav>
+    <br> <br>
+    <div class="container mt-4">
         <div class="text-center">
             <h1 class="mt-1"> Welcome to the admin panel! </h1>
             <a href='logout.php'> To end your session click here </a> <br> <br>
@@ -75,6 +100,11 @@
                     }
                 ?>
             </table>
+        </div>
+    </div>
+    <div class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-secondary">
+        <div class="text-white mb-3 mb-md-0">
+        Copyright © 2022. All rights reserved.
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"  crossorigin="anonymous"></script>
