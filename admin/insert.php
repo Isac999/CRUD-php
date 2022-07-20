@@ -2,12 +2,6 @@
 include('./connect.php');
 //header('Location: ./admin.php');
 
-/*$option = $_POST['option'];
-
-
-}
-*/
-
 $data = file_get_contents('php://input');
 $data = str_replace([":", "table", "}", "{"], "", $data);
 $list = explode("arrayValues", $data);
