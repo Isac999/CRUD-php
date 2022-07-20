@@ -14,9 +14,12 @@ function change(element) {
     })
 }
 
-function del(id) {
+function del(id, parente) {
     let confirmation = confirm("Tem certeza que deseja excluir o registro: " +id +" ?");
     if (confirmation) {
+        const tr = parente.parentElement;
+        tr.remove();
+
         const body = {
             "id": id
         }
@@ -32,6 +35,52 @@ function del(id) {
     }
 }
 
+function createBtn(len) {
+    const tbody = document.querySelector('tbody');
+    const tr = document.createElement("tr");
+    tbody.appendChild(tr);
+    const last = tbody.lastChild; //tr
+    for (let cont = 0; cont < len; cont++) {
+        let td = document.createElement("td");
+        let input = document.createElement("input");
+        input.setAttribute('type', 'text');
+        input.setAttribute('class', 'form-control');
+        last.appendChild(td);
+        last.lastChild.appendChild(input);
+    }
+    let td = document.createElement("td");
+    td.setAttribute('class', 'no-replace');
+    let button = document.createElement("button");
+    button.setAttribute('class', 'btn btn-primary');
+    button.setAttribute('type','submit');
+    button.setAttribute('onclick', 'undoBtn(this.parentElement)');
+    button.innerText = 'Create';
+    last.appendChild(td);
+    last.lastChild.appendChild(button);
+}
+function undoBtn(parent) {
+    let listValues = []
+    const masterNode = parent.parentElement;
+    const arrayNodes = masterNode.childNodes;
+    arrayNodes.forEach((item) => {
+        if (item.lastChild.className != "btn btn-primary") {
+            let value = item.lastChild.value;
+            listValues.push(value);
+            item.innerHTML = value;
+        } else {
+            item.lastChild.className = "btn btn-info";
+            item.lastChild.innerText = "Edit";
+            item.lastChild.setAttribute('onclick', 'change(this.parentElement)');
+            const newDelete = document.createElement('button');
+            newDelete.setAttribute('class', 'btn btn-danger ml-1');
+            newDelete.setAttribute('onclick', 'del(this.id, this.parentElement)');
+            newDelete.innerText = "Delete";
+            item.appendChild(newDelete);
+        }
+    })
+    //document.querySelector('tbody tr td:last-of-type');
+    console.log(listValues);
+}
 function undoChange(element) {
     let listValues = [];
     element.setAttribute('class', 'btn btn-info');

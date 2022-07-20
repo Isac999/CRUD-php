@@ -56,8 +56,8 @@
                                 echo "<th class='text-capitalize'>".$column."</th>";
                             }
                             //echo "</tr>";
+                            echo "<th colspan='2'>Action <button type='button' class='btn btn-success ml-2' onclick='createBtn(".count($columns).")'>Add</button></th>";
                         ?>
-                        <th colspan="2">Action</th>
                     </tr>
                 </thead>
                 <?php 
@@ -69,7 +69,7 @@
                         }
                         echo "<td class='no-replace'>";
                         echo "<button onclick='change(this.parentElement)' class='btn btn-info' id='".$table_name."'>Edit</button>";
-                        echo "<button onclick='del(this.id)' class='btn btn-danger ml-1' id='".$data["id"]."-".$table_name."'>Delete</button>";
+                        echo "<button onclick='del(this.id, this.parentElement)' class='btn btn-danger ml-1' id='".$data["id"]."-".$table_name."'>Delete</button>";
                         echo "</td>";
                         echo "</tr>";
                     }
