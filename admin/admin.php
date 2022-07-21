@@ -8,6 +8,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Admin </title>
     <link  rel="stylesheet"  href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"  integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"  crossorigin="anonymous">
+    <style>
+        input {
+            max-width: 85%;
+        }
+        .no-replace {
+            display: flex;
+        }
+        body {
+            background-color: #3b8abb29;
+        } 
+    </style>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-dark fixed-top">
@@ -55,8 +66,8 @@
             </form>
         </div>
         <div class="row justify-content-center">
-            <table class="table">
-                <thead>
+            <table class="table table-striped">
+                <thead class="thead-dark">
                     <tr>
                         <?php 
                             include('./connect.php');
@@ -78,7 +89,7 @@
                             //Cabeçalho (nome das colunas)
                             //echo "<tr>";
                             foreach ($columns as $column) {
-                                echo "<th class='text-capitalize'>".$column."</th>";
+                                echo "<th class='text-capitalize align-middle'>".$column."</th>";
                             }
                             //echo "</tr>";
                             echo "<th colspan='2'>Action <button type='button' class='btn btn-success ml-2' onclick='createBtn(".count($columns).")'>Add</button></th>";

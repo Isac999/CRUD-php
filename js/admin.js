@@ -36,9 +36,13 @@ function del(id, parente) {
 }
 
 function createBtn(len) {
+    const scrollingElement = (document.scrollingElement || document.body);
+    scrollingElement.scrollTop = scrollingElement.scrollHeight;
+
     const tbody = document.querySelector('tbody');
     const tr = document.createElement("tr");
     tbody.appendChild(tr);
+    
     const last = tbody.lastChild; //tr
     for (let cont = 0; cont < len; cont++) {
         let td = document.createElement("td");
