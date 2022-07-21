@@ -17,6 +17,9 @@
         }
         body {
             background-color: #3b8abb29;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
         } 
     </style>
 </head>
@@ -46,7 +49,7 @@
     </div>
     </nav>
     <br> <br>
-    <div class="container mt-4">
+    <div class="container mt-4 mb-4">
         <div class="text-center">
             <h1 class="mt-1"> Welcome to the admin panel! </h1>
             <a href='logout.php'> To end your session click here </a> <br> <br>
@@ -61,7 +64,7 @@
                             <option value="suppliers">Suppliers</option>
                             <option value="libraries">Libraries</option>
                     </select>
-                    <input type="submit" class="btn btn-info" value="Search">
+                    <input type="submit" class="btn btn-info align-top" value="Search">
                 </div>
             </form>
         </div>
