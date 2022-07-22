@@ -1,7 +1,7 @@
 <?php include('protect.php'); ?>
 
 <!DOCTYPE html>
-<html lang="pt0br">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -117,7 +117,7 @@
     </div>
     <div class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-secondary">
         <div class="text-white mb-3 mb-md-0">
-        Copyright © 2022. All rights reserved.
+        Copyright © 2022. All rights reserved to Isac.
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"  crossorigin="anonymous"></script>

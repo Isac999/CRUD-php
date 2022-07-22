@@ -21,7 +21,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
         header('Location: ./admin/admin.php');
 
     } else {
-        echo 'Incorrect email or password!';
+        echo '<script>alert("Incorrect email or password!")</script>';
     }
 }
 
@@ -123,7 +123,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     </section> 
     <div class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
         <div class="text-white mb-3 mb-md-0">
-        Copyright © 2022. All rights reserved.
+        Copyright © 2022. All rights reserved to Isac.
         </div>
     </div>
     <script  src="https://code.jquery.com/jquery-3.3.1.slim.min.js"  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"  crossorigin="anonymous"></script>
