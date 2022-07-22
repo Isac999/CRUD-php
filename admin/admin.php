@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Admin </title>
+    <link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/512/174/174854.png">
     <link  rel="stylesheet"  href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"  integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"  crossorigin="anonymous">
     <style>
         input {
@@ -90,11 +91,9 @@
                                 array_push($columns, $column['COLUMN_NAME']);
                             }
                             //Cabeçalho (nome das colunas)
-                            //echo "<tr>";
                             foreach ($columns as $column) {
                                 echo "<th class='text-capitalize align-middle'>".$column."</th>";
                             }
-                            //echo "</tr>";
                             echo "<th colspan='2'>Action <button type='button' class='btn btn-success ml-2' onclick='createBtn(".count($columns).")'>Add</button></th>";
                         ?>
                     </tr>
