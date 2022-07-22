@@ -4,7 +4,7 @@ function change(element) {
     childrenTarget.forEach((item) => {
         let content = item.innerText;
         if (item.className != 'no-replace') {
-            item.innerHTML = "<input type='text' class='form-control' value='"+content+"'>";
+            item.innerHTML = "<input type='text' class='form-control' placeholder='Type here' value='"+content+"'>";
         } else {
             const newBtnWarning = element.firstChild;
             newBtnWarning.setAttribute('class', 'btn btn-warning');
@@ -45,12 +45,28 @@ function createBtn(len) {
     
     const last = tbody.lastChild; //tr
     for (let cont = 0; cont < len; cont++) {
-        let td = document.createElement("td");
-        let input = document.createElement("input");
-        input.setAttribute('type', 'text');
-        input.setAttribute('class', 'form-control');
-        last.appendChild(td);
-        last.lastChild.appendChild(input);
+        if (cont === 0) {
+            let lastId = document.querySelectorAll('tbody tr td:first-of-type');
+            lastId = lastId[lastId.length - 1];
+            lastId = parseInt(lastId.innerText);
+
+            let td = document.createElement("td");
+            let input = document.createElement("input");
+            input.setAttribute('type', 'text');
+            input.setAttribute('class', 'form-control');
+            input.setAttribute('placeholder', 'Type here');
+            input.setAttribute('value', lastId + 1);
+            last.appendChild(td);
+            last.lastChild.appendChild(input);
+        } else {
+            let td = document.createElement("td");
+            let input = document.createElement("input");
+            input.setAttribute('type', 'text');
+            input.setAttribute('class', 'form-control');
+            input.setAttribute('placeholder', 'Type here')
+            last.appendChild(td);
+            last.lastChild.appendChild(input);
+        }
     }
     let td = document.createElement("td");
     td.setAttribute('class', 'no-replace');
