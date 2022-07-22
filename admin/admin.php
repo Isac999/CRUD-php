@@ -27,59 +27,52 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-dark fixed-top">
     <div class="container">
-        <a class="navbar-brand text-white font-weight-bold" href="#">Start Bootstrap</a>
+        <a class="navbar-brand text-white font-weight-bold"> Admin Control</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ms-auto">
-            <li class="nav-item active">
-            <a class="nav-link text-white" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link text-white" href="#">About</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link text-white" href="#">Services</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link text-white" href="#">Contact</a>
-            </li>
-        </ul>
+        <div class="collapse navbar-collapse row justify-content-around" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                <a class="nav-link text-white" id="books" href="?page=books">Books</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link text-white" id="customers" href="?page=customers">Customers</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link text-white" id="books_rentals" href="?page=books_rentals">Books Rentals</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link text-white" id="requests_to_suppliers" href="?page=requests_to_suppliers">Requests to Suppliers</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link text-white" id="suppliers" href="?page=suppliers">Suppliers</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link text-white" id="libraries" href="?page=libraries">Libraries</a>
+                </li>
+            </ul>
         </div>
+        <a class="navbar-brand text-white font-weight-bold" href="logout.php">Logout</a>
     </div>
     </nav>
     <br> <br>
     <div class="container mt-4 mb-4">
         <div class="text-center">
             <h1 class="mt-1"> Welcome to the admin panel! </h1>
-            <a href='logout.php'> To end your session click here </a> <br> <br>
-            <form action="" method="POST">
-                <div class="mb-3">
-                    <select autofocus name="table-name" id="option-query" class="form-control mb-2 font-weight-bold w-25 d-inline">
-                            <option value="books" hidden>Choose the table</option>
-                            <option value="books">Books</option>
-                            <option value="customers">Customers</option>
-                            <option value="books_rentals">Books Rentals</option>
-                            <option value="requests_to_suppliers">Requests to Suppliers</option>
-                            <option value="suppliers">Suppliers</option>
-                            <option value="libraries">Libraries</option>
-                    </select>
-                    <input type="submit" class="btn btn-info align-top" value="Search">
-                </div>
-            </form>
+            <p>Create, update, delete and read data quickly!</p>
         </div>
         <div class="row justify-content-center">
             <table class="table table-striped">
-                <thead class="thead-dark">
+                <thead class="text-white font-weight-bold" style="background-color: #146176">
                     <tr>
                         <?php 
                             include('./connect.php');
-                            $table_name = $_POST['table-name'];
+                            $table_name = $_GET['page'];
                             if (empty($table_name)) {
                                 $table_name = 'books';
                             }
-    
+
                             $table = $mysqli->real_escape_string($table_name);
                             $exec = "SELECT * FROM $table";
                             $query = $mysqli->query($exec) or die('Falha ao executar consulta!'); 

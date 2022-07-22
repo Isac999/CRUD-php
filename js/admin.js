@@ -1,3 +1,15 @@
+let url_atual = window.location.href;
+if (url_atual.split('=')[1]) {
+    let targetName = url_atual.split('=')[1];
+    const targetEl = document.querySelector('#'+targetName);
+    targetEl.style.backgroundColor = 'rgb(8 8 8 / 39%)';
+    targetEl.style.borderRadius = '3px';
+} else {
+    const targetEl = document.querySelector('#books');
+    targetEl.style.backgroundColor = 'rgb(8 8 8 / 39%)';
+    targetEl.style.borderRadius = '3px';
+}
+
 function change(element) {
     const parent = element.parentElement;
     const childrenTarget = parent.childNodes;
