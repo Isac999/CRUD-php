@@ -107,7 +107,6 @@
                 <?php 
                     //Dados da consulta
                     while ($data = mysqli_fetch_assoc($query_limite)) {
-                        echo '<br>';
                         echo "<tr>";
                         foreach ($columns as $column) {
                             echo "<td>".$data[$column]."</td>";
