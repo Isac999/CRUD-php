@@ -1,5 +1,5 @@
-let url_atual = window.location.href;
-if (url_atual.split('=')[1]) {
+let url_atual = window.location.search.split('&')[0];
+if (url_atual) {
     let targetName = url_atual.split('=')[1];
     const targetEl = document.querySelector('#'+targetName);
     targetEl.style.backgroundColor = 'rgb(8 8 8 / 39%)';

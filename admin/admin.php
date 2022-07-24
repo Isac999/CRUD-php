@@ -34,22 +34,22 @@
         <div class="collapse navbar-collapse row justify-content-around" id="navbarResponsive">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                <a class="nav-link text-white" id="books" href="?page=books">Books</a>
+                <a class="nav-link text-white" id="books" href="?page=books&pagina=1">Books</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link text-white" id="customers" href="?page=customers">Customers</a>
+                <a class="nav-link text-white" id="customers" href="?page=customers&pagina=1">Customers</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link text-white" id="books_rentals" href="?page=books_rentals">Books Rentals</a>
+                <a class="nav-link text-white" id="books_rentals" href="?page=books_rentals&pagina=1">Books Rentals</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link text-white" id="requests_to_suppliers" href="?page=requests_to_suppliers">Requests to Suppliers</a>
+                <a class="nav-link text-white" id="requests_to_suppliers" href="?page=requests_to_suppliers&pagina=1">Requests to Suppliers</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link text-white" id="suppliers" href="?page=suppliers">Suppliers</a>
+                <a class="nav-link text-white" id="suppliers" href="?page=suppliers&pagina=1">Suppliers</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link text-white" id="libraries" href="?page=libraries">Libraries</a>
+                <a class="nav-link text-white" id="libraries" href="?page=libraries&pagina=1">Libraries</a>
                 </li>
             </ul>
         </div>
@@ -61,7 +61,7 @@
         <div class="text-center">
             <h1 class="mt-1"> Welcome to the admin panel! </h1>
             <p>Create, update, delete and read data quickly!</p> 
-        </div><br>
+        </div>
         <div class="row justify-content-center">
             <table class="table table-striped">
                 <thead class="text-white font-weight-bold" style="background-color: #146176">
@@ -69,14 +69,27 @@
                         <?php 
                             include('./connect.php');
                             $table_name = $_GET['page'];
+                            $number_page = $_GET['pagina'];
+
                             if (empty($table_name)) {
                                 $table_name = 'books';
                             }
-
+                            if (!$number_page) {
+                                $number_page = 1;
+                            }
+                            
+                            $per_page = 10;
+                            $inicio = $number_page - 1;
+                            $inicio = $inicio * $per_page;
+                            
                             $table = $mysqli->real_escape_string($table_name);
                             $exec = "SELECT * FROM $table";
-                            $query = $mysqli->query($exec) or die('Falha ao executar consulta!'); 
                             
+                            $limite = "$exec LIMIT $inicio, $per_page";
+
+                            $query = $mysqli->query($exec) or die('Falha ao executar consulta!'); 
+                            $query_limite = $mysqli->query($limite) or die('Falha ao executar consulta!'); 
+
                             $columns = array();
                             $exec_columns = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = 'library' AND TABLE_NAME = '$table'";
                             $selectColumns = $mysqli->query($exec_columns) or die('Erro ao consultar colunas');
@@ -93,7 +106,8 @@
                 </thead>
                 <?php 
                     //Dados da consulta
-                    while ($data = mysqli_fetch_assoc($query)) {
+                    while ($data = mysqli_fetch_assoc($query_limite)) {
+                        echo '<br>';
                         echo "<tr>";
                         foreach ($columns as $column) {
                             echo "<td>".$data[$column]."</td>";
@@ -104,6 +118,19 @@
                         echo "</td>";
                         echo "</tr>";
                     }
+                    $total_registros = $query->num_rows;
+                    $total_pages = $total_registros / $per_page;
+
+                    $anterior = $number_page - 1;
+                    $proximo = $number_page + 1; 
+                    if ($number_page > 1) {
+                        echo " <a href='?page=$table_name&pagina=$anterior'><- Anterior</a> ";
+                    }
+
+                    if ($number_page < $total_pages) {
+                        echo " <a href='?page=$table_name&pagina=$proximo'>Próxima -></a>";
+                    }
+                    
                 ?>
             </table>
         </div>
