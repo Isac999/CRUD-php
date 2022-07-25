@@ -122,17 +122,20 @@
 
                     $anterior = $number_page - 1;
                     $proximo = $number_page + 1; 
-                    if ($number_page > 1) {
-                        echo " <a href='?page=$table_name&pagina=$anterior'><- Anterior</a> ";
-                    }
-
-                    if ($number_page < $total_pages) {
-                        echo " <a href='?page=$table_name&pagina=$proximo'>Próxima -></a>";
-                    }
-                    
                 ?>
             </table>
         </div>
+    </div>
+    <div class="row justify-content-center mb-5">
+        <?php 
+            if ($number_page > 1) {
+                echo "<a href='?page=$table_name&pagina=$anterior' class='border rounded p-2' style='color: black; background-color: #299bc0;'> <- Previous Page </a> ";
+            }
+
+            if ($number_page < $total_pages) {
+                echo "<a href='?page=$table_name&pagina=$proximo' class='rounded p-2 ml-2' style='color: black; background-color: #299bc0;'> Next Page -> </a>";
+            }
+        ?>
     </div>
     <div class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-secondary">
         <div class="text-white mb-3 mb-md-0">
