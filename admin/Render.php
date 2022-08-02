@@ -11,12 +11,15 @@ if (!isset($_SESSION['id'])) {
 require_once('../Connect.php');
 
 class Render extends Connect {
-    private $table; //
-    private $columns; //
-    private $query; //
-    private $query_limite; //
-    public $per_page = 10; //
-    public $number_page; //
+    private $table; 
+    private $columns; 
+    private $query; 
+    private $query_limite; 
+    public $per_page = 10; 
+    public $number_page; 
+    public $anterior; 
+    public $proximo;
+    public $total_pages;
 
     public function paginacao($table_name, $number_page) {
         if (empty($table_name)) {
@@ -87,12 +90,22 @@ class Render extends Connect {
                         echo "</tr>";
                     }
                     $total_registros = $this->query->num_rows;
-                    $total_pages = $total_registros / $this->per_page;
+                    $this->total_pages = $total_registros / $this->per_page;
 
-                    $anterior = $this->number_page - 1;
-                    $proximo = $this->number_page + 1; 
-        $anterior = $this->number_page - 1;
-        $proximo = $this->number_page + 1; 
+                    $this->anterior = $this->number_page - 1;
+                    $this->proximo = $this->number_page + 1; 
+        $this->anterior = $this->number_page - 1;
+        $this->proximo = $this->number_page + 1; 
+    }
+    
+    public function renderPaginacao() {
+        if ($this->number_page > 1) {
+            echo "<a href='?page=$this->table&pagina=$this->anterior' class='border rounded p-2' style='color: black; background-color: #299bc0;'> <- Previous Page </a> ";
+        }
+
+        if ($this->number_page < $this->total_pages) {
+            echo "<a href='?page=$this->table&pagina=$this->proximo' class='rounded p-2 ml-2' style='color: black; background-color: #299bc0;'> Next Page -> </a>";
+        }
     }
 }
 
