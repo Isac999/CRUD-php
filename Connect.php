@@ -5,6 +5,7 @@ class Connect {
     private $senha;
     protected $database;
     protected $host;
+    private $mysqli;
 
     public function __construct($pass) {
         $this->usuario = 'root';
@@ -12,18 +13,41 @@ class Connect {
         $this->database = 'admin';
         $this->host = 'localhost';
     }
+
     public function connectMysqli() {
-        $mysqli = new mysqli(
+        $this->mysqli = new mysqli(
             $this->getHost(),
             $this->getUsuario(), 
             $this->getSenha(), 
             $this->getDatabase()
         );
 
-        if ($mysqli->error) {
-            die('Falha ao conectar! erro: '.$mysqli->error);
+        if ($this->mysqli->error) {
+            die('Falha ao conectar! erro: '.$this->mysqli->error);
         }
     }
+
+    public function queryLogin($emailPost, $passwordPost) {
+        $email = $this->mysqli->real_escape_string($emailPost);
+        $senha = $this->mysqli->real_escape_string($passwordPost);
+
+        $exec = "SELECT * FROM login WHERE email = '$email' AND senha = '$senha'";
+        $query = $this->mysqli->query($exec) or die('Falha ao executar consulta! mensagem: '.$this->mysqli->error);
+        $numRows = $query->num_rows;
+
+        if (!empty($numRows)) {
+            $login = $query->fetch_assoc();
+            if (!isset($_SESSION)) {
+                session_start();
+            }
+            $_SESSION['id'] = $login['id'];
+            header('Location: ./admin/admin.php');
+    
+        } else {
+            echo '<script>alert("Incorrect email or password!")</script>';
+        }
+    }
+
     public function getUsuario() {
         return $this->usuario;
     }

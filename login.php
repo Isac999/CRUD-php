@@ -2,29 +2,11 @@
 include('Connect.php');
 
 $conn = new Connect('');
+$conn->connectMysqli();
 
 if (isset($_POST['email']) && isset($_POST['password'])) {
 
-    $email = $mysqli->real_escape_string($_POST['email']);
-    $senha = $mysqli->real_escape_string($_POST['password']);
-
-    $exec = "SELECT * FROM login WHERE email = '$email' AND senha = '$senha'";
-    $query = $mysqli->query($exec) or die('Falha ao executar consulta! mensagem: '.$mysqli->error);
-
-    $numRows = $query->num_rows;
-
-    if (!empty($numRows)) {
-        $login = $query->fetch_assoc();
-        if (!isset($_SESSION)) {
-            session_start();
-        }
-        $_SESSION['id'] = $login['id'];
-
-        header('Location: ./admin/admin.php');
-
-    } else {
-        echo '<script>alert("Incorrect email or password!")</script>';
-    }
+    $conn->queryLogin($_POST['email'], $_POST['password']);
 }
 
 ?>
