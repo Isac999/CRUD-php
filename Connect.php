@@ -5,7 +5,7 @@ class Connect {
     private $senha;
     protected $database;
     protected $host;
-    private $mysqli;
+    protected $mysqli;
 
     public function __construct($pass) {
         $this->usuario = 'root';
@@ -42,6 +42,7 @@ class Connect {
             }
             $_SESSION['id'] = $login['id'];
             header('Location: ./admin/admin.php');
+
     
         } else {
             echo '<script>alert("Incorrect email or password!")</script>';
@@ -59,6 +60,9 @@ class Connect {
     }
     public function getHost() {
         return $this->host;
+    }
+    protected function getMysqli() {
+        return $this->mysqli;
     }
 
     public function setUsuario($new) {

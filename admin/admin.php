@@ -67,48 +67,16 @@
                 <thead class="text-white font-weight-bold" style="background-color: #146176">
                     <tr>
                         <?php 
-                            include('../Connect.php');
-                            $conn2 = new Connect('');
+                            include('./Render.php');
+                            $conn2 = new Render('');
                             $conn2->setDatabase('library');
                             $conn2->connectMysqli();
-                            
-                            $table_name = $_GET['page'];
-                            $number_page = $_GET['pagina'];
-
-                            if (empty($table_name)) {
-                                $table_name = 'books';
-                            }
-                            if (!$number_page) {
-                                $number_page = 1;
-                            }
-                            
-                            $per_page = 10;
-                            $inicio = $number_page - 1;
-                            $inicio = $inicio * $per_page;
-                            
-                            $table = $mysqli->real_escape_string($table_name);
-                            $exec = "SELECT * FROM $table";
-                            
-                            $limite = "$exec LIMIT $inicio, $per_page";
-
-                            $query = $mysqli->query($exec) or die('Falha ao executar consulta!'); 
-                            $query_limite = $mysqli->query($limite) or die('Falha ao executar consulta!'); 
-
-                            $columns = array();
-                            $exec_columns = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = 'library' AND TABLE_NAME = '$table'";
-                            $selectColumns = $mysqli->query($exec_columns) or die('Erro ao consultar colunas');
-                            while ($column = $selectColumns->fetch_assoc()) {
-                                array_push($columns, $column['COLUMN_NAME']);
-                            }
-                            //Cabeçalho (nome das colunas)
-                            foreach ($columns as $column) {
-                                echo "<th class='text-capitalize align-middle'>".$column."</th>";
-                            }
-                            echo "<th colspan='2'>Action <button type='button' class='btn btn-success ml-2' onclick='createBtn(".count($columns).")'>Add</button></th>";
+            
+                            $conn2->paginacao($_GET['page'], $_GET['pagina']);
                         ?>
                     </tr>
                 </thead>
-                <?php 
+                <?php /*
                     //Dados da consulta
                     while ($data = mysqli_fetch_assoc($query_limite)) {
                         echo "<tr>";
@@ -125,20 +93,20 @@
                     $total_pages = $total_registros / $per_page;
 
                     $anterior = $number_page - 1;
-                    $proximo = $number_page + 1; 
+                    $proximo = $number_page + 1; */
                 ?>
             </table>
         </div>
     </div>
     <div class="row justify-content-center mb-5">
-        <?php 
+        <?php /*
             if ($number_page > 1) {
                 echo "<a href='?page=$table_name&pagina=$anterior' class='border rounded p-2' style='color: black; background-color: #299bc0;'> <- Previous Page </a> ";
             }
 
             if ($number_page < $total_pages) {
                 echo "<a href='?page=$table_name&pagina=$proximo' class='rounded p-2 ml-2' style='color: black; background-color: #299bc0;'> Next Page -> </a>";
-            }
+            }*/
         ?>
     </div>
     <div class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-secondary">
