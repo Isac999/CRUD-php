@@ -69,29 +69,12 @@
                             $conn2 = new Render('');
                             $conn2->setDatabase('library');
                             $conn2->connectMysqli();
-            
                             $conn2->paginacao($_GET['page'], $_GET['pagina']);
                         ?>
                     </tr>
                 </thead>
-                <?php /*
-                    //Dados da consulta
-                    while ($data = mysqli_fetch_assoc($query_limite)) {
-                        echo "<tr>";
-                        foreach ($columns as $column) {
-                            echo "<td>".$data[$column]."</td>";
-                        }
-                        echo "<td class='no-replace'>";
-                        echo "<button onclick='change(this.parentElement)' class='btn btn-info' id='".$table_name."'>Edit</button>";
-                        echo "<button onclick='del(this.id, this.parentElement)' class='btn btn-danger ml-1' id='".$data["id"]."-".$table_name."'>Delete</button>";
-                        echo "</td>";
-                        echo "</tr>";
-                    }
-                    $total_registros = $query->num_rows;
-                    $total_pages = $total_registros / $per_page;
-
-                    $anterior = $number_page - 1;
-                    $proximo = $number_page + 1; */
+                <?php 
+                    $conn2->rows();
                 ?>
             </table>
         </div>

@@ -11,42 +11,88 @@ if (!isset($_SESSION['id'])) {
 require_once('../Connect.php');
 
 class Render extends Connect {
+    private $table; //
+    private $columns; //
+    private $query; //
+    private $query_limite; //
+    public $per_page = 10; //
+    public $number_page; //
 
     public function paginacao($table_name, $number_page) {
         if (empty($table_name)) {
-            $table_name = 'books';
+            $this->table = 'books';
+        } else {
+            $this->table = $table_name;
         }
         if (!$number_page) {
-            $number_page = 1;
+            $this->number_page = 1;
+        } else {
+            $this->number_page = $number_page;
         }
         
-        $per_page = 10;
-        $inicio = $number_page - 1;
-        $inicio = $inicio * $per_page;
+        $this->per_page = 10;
+        $inicio = $this->number_page - 1;
+        $inicio = $inicio * $this->per_page;
 
-        $exec = "SELECT * FROM $table_name";
-        $limite = "$exec LIMIT $inicio, $per_page";
-        
-        $query = $this->mysqli->query($exec) or die('Falha ao executar consulta!'); 
-        $query_limite = $this->mysqli->query($limite) or die('Falha ao executar consulta!'); 
+        $exec = "SELECT * FROM $this->table";
+        $limite = "$exec LIMIT $inicio, $this->per_page";
 
-        $this->headerRender($table_name);
+        $this->query = $this->mysqli->query($exec) or die('Falha ao executar consulta!'); 
+        $this->query_limite = $this->mysqli->query($limite) or die('Falha ao executar consulta!'); 
+
+        $this->headerRender($this->table);
     }
 
     public function headerRender($table) {
-        $columns = array();
+        $this->columns = array();
         $exec_columns = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = '".$this->getDatabase()."' AND TABLE_NAME = '$table'";
         $selectColumns = $this->mysqli->query($exec_columns) or die('Erro ao consultar colunas');
         
         while ($column = $selectColumns->fetch_assoc()) {
-            array_push($columns, $column['COLUMN_NAME']);
+            array_push($this->columns, $column['COLUMN_NAME']);
         }
 
         //Cabeçalho (nome das colunas)
-        foreach ($columns as $column) {
+        foreach ($this->columns as $column) {
             echo "<th class='text-capitalize align-middle'>".$column."</th>";
         }
-        echo "<th colspan='2'>Action <button type='button' class='btn btn-success ml-2' onclick='createBtn(".count($columns).")'>Add</button></th>";
+        echo "<th colspan='2'>Action <button type='button' class='btn btn-success ml-2' onclick='createBtn(".count($this->columns).")'>Add</button></th>";
+    }
+
+    public function rows() {
+        //Dados da consulta
+        while ($data = mysqli_fetch_assoc($this->query_limite)) {
+            echo "<tr>";
+            foreach ($this->columns as $column) {
+                echo "<td>".$data[$column]."</td>";
+            }
+            echo "<td class='no-replace'>";
+            echo "<button onclick='change(this.parentElement)' class='btn btn-info' id='".$this->table."'>Edit</button>";
+            echo "<button onclick='del(this.id, this.parentElement)' class='btn btn-danger ml-1' id='".$data["id"]."-".$this->table."'>Delete</button>";
+            echo "</td>";
+            echo "</tr>";
+        }
+        $total_registros = $this->query->num_rows;
+        $total_pages = $total_registros / $this->per_page;
+        //Dados da consulta
+                    while ($data = mysqli_fetch_assoc($this->query_limite)) {
+                        echo "<tr>";
+                        foreach ($this->columns as $column) {
+                            echo "<td>".$data[$column]."</td>";
+                        }
+                        echo "<td class='no-replace'>";
+                        echo "<button onclick='change(this.parentElement)' class='btn btn-info' id='".$this->table."'>Edit</button>";
+                        echo "<button onclick='del(this.id, this.parentElement)' class='btn btn-danger ml-1' id='".$data["id"]."-".$this->table."'>Delete</button>";
+                        echo "</td>";
+                        echo "</tr>";
+                    }
+                    $total_registros = $this->query->num_rows;
+                    $total_pages = $total_registros / $this->per_page;
+
+                    $anterior = $this->number_page - 1;
+                    $proximo = $this->number_page + 1; 
+        $anterior = $this->number_page - 1;
+        $proximo = $this->number_page + 1; 
     }
 }
 
