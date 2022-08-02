@@ -1,5 +1,7 @@
 <?php 
-include('connect-adm.php');
+include('Connect.php');
+
+$conn = new Connect('');
 
 if (isset($_POST['email']) && isset($_POST['password'])) {
 
