@@ -1,5 +1,4 @@
-<?php include('protect.php'); ?>
-
+<?php include('./Render.php'); ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -67,7 +66,6 @@
                 <thead class="text-white font-weight-bold" style="background-color: #146176">
                     <tr>
                         <?php 
-                            include('./Render.php');
                             $conn2 = new Render('');
                             $conn2->setDatabase('library');
                             $conn2->connectMysqli();

@@ -1,5 +1,15 @@
 <?php 
+
+if (!isset($_SESSION)) {
+    session_start();
+} 
+if (!isset($_SESSION['id'])) {
+    header("Location: ../login.php");
+    die("Você não tem acesso a está página! Faça login <a href='./../login.php'>clicando aqui</a>");
+}
+
 require_once('../Connect.php');
+
 class Render extends Connect {
 
     public function paginacao($table_name, $number_page) {
@@ -27,7 +37,7 @@ class Render extends Connect {
         $columns = array();
         $exec_columns = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = '".$this->getDatabase()."' AND TABLE_NAME = '$table'";
         $selectColumns = $this->mysqli->query($exec_columns) or die('Erro ao consultar colunas');
-        echo "tudo ok";
+        
         while ($column = $selectColumns->fetch_assoc()) {
             array_push($columns, $column['COLUMN_NAME']);
         }
