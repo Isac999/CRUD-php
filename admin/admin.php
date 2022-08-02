@@ -74,14 +74,14 @@
                     </tr>
                 </thead>
                 <?php 
-                    $conn2->rows();
+                    $conn2->rowsRender();
                 ?>
             </table>
         </div>
     </div>
     <div class="row justify-content-center mb-5">
         <?php 
-            $conn2->renderPaginacao();
+            $conn2->paginacaoRender();
         ?>
     </div>
     <div class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-secondary">

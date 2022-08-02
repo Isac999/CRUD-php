@@ -62,7 +62,7 @@ class Render extends Connect {
         echo "<th colspan='2'>Action <button type='button' class='btn btn-success ml-2' onclick='createBtn(".count($this->columns).")'>Add</button></th>";
     }
 
-    public function rows() {
+    public function rowsRender() {
         //Dados da consulta
         while ($data = mysqli_fetch_assoc($this->query_limite)) {
             echo "<tr>";
@@ -98,7 +98,7 @@ class Render extends Connect {
         $this->proximo = $this->number_page + 1; 
     }
     
-    public function renderPaginacao() {
+    public function paginacaoRender() {
         if ($this->number_page > 1) {
             echo "<a href='?page=$this->table&pagina=$this->anterior' class='border rounded p-2' style='color: black; background-color: #299bc0;'> <- Previous Page </a> ";
         }
