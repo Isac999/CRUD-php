@@ -67,7 +67,11 @@
                 <thead class="text-white font-weight-bold" style="background-color: #146176">
                     <tr>
                         <?php 
-                            include('./connect.php');
+                            include('../Connect.php');
+                            $conn2 = new Connect('');
+                            $conn2->setDatabase('library');
+                            $conn2->connectMysqli();
+                            
                             $table_name = $_GET['page'];
                             $number_page = $_GET['pagina'];
 

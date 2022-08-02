@@ -1,12 +1,12 @@
 <?php 
 include('Connect.php');
 
-$conn = new Connect('');
-$conn->connectMysqli();
+$conn1 = new Connect('');
+$conn1->connectMysqli();
 
 if (isset($_POST['email']) && isset($_POST['password'])) {
 
-    $conn->queryLogin($_POST['email'], $_POST['password']);
+    $conn1->queryLogin($_POST['email'], $_POST['password']);
 }
 
 ?>
