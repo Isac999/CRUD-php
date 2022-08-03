@@ -1,4 +1,4 @@
-<?php include('./Render.php'); ?>
+<?php include('./crud/Read.php'); ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -66,7 +66,7 @@
                 <thead class="text-white font-weight-bold" style="background-color: #146176">
                     <tr>
                         <?php 
-                            $conn2 = new Render('');
+                            $conn2 = new Read('');
                             $conn2->setDatabase('library');
                             $conn2->connectMysqli();
                             $conn2->paginacao($_GET['page'], $_GET['pagina']);

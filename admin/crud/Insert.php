@@ -1,5 +1,5 @@
 <?php 
-require_once('../Connect.php');
+require_once('../../Connect.php');
 
 class Insert extends Connect {
     private $listData;
@@ -52,7 +52,6 @@ class Insert extends Connect {
         }
     }
 }
-
 
 $insert = new Insert('');
 $insert->setDatabase('library');

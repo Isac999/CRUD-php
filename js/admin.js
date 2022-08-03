@@ -139,7 +139,7 @@ function update(tableName, listValues) {
         "arrayValues" : listValues
     }
     let request = new XMLHttpRequest();
-    request.open("POST", "http://127.0.0.1/CRUD/admin/update.php", true);
+    request.open("POST", "http://127.0.0.1/CRUD/admin/crud/Update.php", true);
     request.setRequestHeader("Content-Type", "application/json");
     request.send(JSON.stringify(body)); 
 
@@ -155,7 +155,7 @@ function createData(tableName, listValues) {
         "arrayValues" : listValues
     }
     let request = new XMLHttpRequest();
-    request.open("POST", "http://127.0.0.1/CRUD/admin/Insert.php", true);
+    request.open("POST", "http://127.0.0.1/CRUD/admin/crud/Insert.php", true);
     request.setRequestHeader("Content-Type", "application/json");
     request.send(JSON.stringify(body)); 
 
