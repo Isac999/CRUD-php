@@ -1,20 +1,22 @@
 <?php 
 
 class Connect {
-    protected $usuario;
-    private $senha;
-    protected $database;
-    protected $host;
-    protected $mysqli;
+    protected string $usuario;
+    private string $senha;
+    protected string $database;
+    protected string $host;
+    protected object $mysqli;
 
-    public function __construct($pass) {
+    public function __construct($pass)
+    {
         $this->usuario = 'root';
         $this->setSenha($pass);
         $this->database = 'admin';
         $this->host = 'localhost';
     }
 
-    public function connectMysqli() {
+    public function connectMysqli() : bool
+    {
         $this->mysqli = new mysqli(
             $this->getHost(),
             $this->getUsuario(), 
@@ -24,10 +26,13 @@ class Connect {
 
         if ($this->mysqli->error) {
             die('Falha ao conectar! erro: '.$this->mysqli->error);
+            return false;
         }
+        return true;
     }
 
-    public function queryLogin($emailPost, $passwordPost) {
+    public function queryLogin($emailPost, $passwordPost) : void
+    {
         $email = $this->mysqli->real_escape_string($emailPost);
         $senha = $this->mysqli->real_escape_string($passwordPost);
 
@@ -42,39 +47,47 @@ class Connect {
             }
             $_SESSION['id'] = $login['id'];
             header('Location: ./admin/admin.php');
-
     
         } else {
             echo '<script>alert("Incorrect email or password!")</script>';
         }
     }
 
-    public function getUsuario() {
+    public function getUsuario() : string
+    {
         return $this->usuario;
     }
-    private function getSenha() {
+    private function getSenha() : string 
+    {
         return $this->senha;
     }
-    public function getDatabase() {
+    public function getDatabase() : string
+    {
         return $this->database;
     }
-    public function getHost() {
+    public function getHost() : string 
+    {
         return $this->host;
     }
-    protected function getMysqli() {
+    protected function getMysqli() : object
+    {
         return $this->mysqli;
     }
 
-    public function setUsuario($new) {
+    public function setUsuario($new) : void 
+    {
         $this->usuario = $new;
     }
-    private function setSenha($new) {
+    private function setSenha($new) : void
+    {
         $this->senha = $new;
     }
-    public function setDatabase($new) {
+    public function setDatabase($new) : void
+    {
         $this->database = $new;
     }
-    public function setHost($new) {
+    public function setHost($new) : void
+    {
         $this->host = $new;
     }
     

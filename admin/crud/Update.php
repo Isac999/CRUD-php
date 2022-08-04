@@ -2,10 +2,11 @@
 require_once('../../Connect.php');
 
 class Update extends Connect {
-    private $listData;
-    private $table_name;
+    private array $listData;
+    private string $table_name;
 
-    public function transformData($json) {
+    public function transformData($json) : void
+    {
         $data = $json;
         $data = str_replace([":", "table", "}", "{"], "", $data);
         $list = explode("arrayValues", $data);
@@ -22,7 +23,8 @@ class Update extends Connect {
         $this->sendData($this->table_name, $this->listData);
     }
 
-    public function sendData($table_name, $listData) {
+    public function sendData($table_name, $listData) : void
+    {
         $columns = array();
         $exec_columns = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = 'library' AND TABLE_NAME = '$table_name'";
         $selectColumns = $this->mysqli->query($exec_columns) or die('Erro ao consultar colunas');

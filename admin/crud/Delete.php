@@ -2,9 +2,10 @@
 require_once('../../Connect.php');
 
 class Delete extends Connect {
-    private $arrayData;
+    private array $arrayData;
 
-    public function transformData($json) {
+    public function transformData($json) : void
+    {
         $data = $json;
         $data = str_replace(['{', '}', '"', ':', 'id'], "", $data);
         $arrayData = explode("-", $data);
@@ -15,9 +16,11 @@ class Delete extends Connect {
         $this->sendData($this->arrayData);
     }
 
-    public function sendData($arrayData) {
+    public function sendData($arrayData) : bool
+    {
         $exec = "DELETE FROM `$arrayData[1]` WHERE id = '$arrayData[0]'";
-        $query = $this->mysqli->query($exec);
+        $query = $this->mysqli->query($exec) or die("Falha na deleção");
+        return true;
     }
 }
 
