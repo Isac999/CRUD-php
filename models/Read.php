@@ -10,6 +10,7 @@ if (!isset($_SESSION['id'])) {
 
 
 require_once('./models/Connect.php');
+use \models\Connect;
 
 class Read extends Connect {
     private string $table; 

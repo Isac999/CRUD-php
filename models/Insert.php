@@ -1,5 +1,6 @@
 <?php 
 require_once('./Connect.php');
+use \models\Connect;
 
 class Insert extends Connect {
     private array $listData;

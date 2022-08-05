@@ -1,5 +1,6 @@
 <?php 
 require_once('./Connect.php');
+use \models\Connect;
 
 class Update extends Connect {
     private array $listData;

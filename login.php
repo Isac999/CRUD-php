@@ -1,6 +1,6 @@
 <?php 
 require('./models/Connect.php');
-
+use \models\Connect;
 $conn1 = new Connect('');
 $conn1->connectMysqli();
 

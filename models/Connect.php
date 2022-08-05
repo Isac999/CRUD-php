@@ -1,4 +1,6 @@
 <?php 
+namespace models;
+use mysqli;
 
 class Connect {
     protected string $usuario;
