@@ -46,7 +46,7 @@ class Connect {
                 session_start();
             }
             $_SESSION['id'] = $login['id'];
-            header('Location: ./index.php');
+            header('Location: ./index');
     
         } else {
             echo '<script>alert("Incorrect email or password!")</script>';
@@ -60,7 +60,7 @@ class Connect {
         }
         
         session_destroy();
-        header("Location: ../login.php");
+        header("Location: ../login");
     }
 
     public function getUsuario() : string

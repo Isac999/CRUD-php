@@ -34,7 +34,7 @@ class Read extends Connect {
         } else {
             $this->number_page = $number_page;
         }
-        
+
         $this->per_page = 10;
         $inicio = $this->number_page - 1;
         $inicio = $inicio * $this->per_page;
