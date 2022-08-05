@@ -1,4 +1,4 @@
-<?php include('./model/Read.php'); ?>
+<?php require('./model/Read.php'); ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
