@@ -1,5 +1,5 @@
 <?php 
-require('./model/Connect.php');
+require('./models/Connect.php');
 
 $conn1 = new Connect('');
 $conn1->connectMysqli();

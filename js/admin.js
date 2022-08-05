@@ -36,7 +36,7 @@ function del(id, parente) {
             "id": id
         }
         let request = new XMLHttpRequest();
-        request.open("POST", "http://127.0.0.1/CRUD/model/Delete.php", true);
+        request.open("POST", "http://127.0.0.1/CRUD/models/Delete.php", true);
         request.setRequestHeader("Content-Type", "application/json");
         request.send(JSON.stringify(body)); 
     
@@ -139,7 +139,7 @@ function update(tableName, listValues) {
         "arrayValues" : listValues
     }
     let request = new XMLHttpRequest();
-    request.open("POST", "http://127.0.0.1/CRUD/model/Update.php", true);
+    request.open("POST", "http://127.0.0.1/CRUD/models/Update.php", true);
     request.setRequestHeader("Content-Type", "application/json");
     request.send(JSON.stringify(body)); 
 
@@ -155,7 +155,7 @@ function createData(tableName, listValues) {
         "arrayValues" : listValues
     }
     let request = new XMLHttpRequest();
-    request.open("POST", "http://127.0.0.1/CRUD/model/Insert.php", true);
+    request.open("POST", "http://127.0.0.1/CRUD/models/Insert.php", true);
     request.setRequestHeader("Content-Type", "application/json");
     request.send(JSON.stringify(body)); 
 

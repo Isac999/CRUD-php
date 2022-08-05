@@ -1,4 +1,4 @@
-<?php require('./model/Read.php'); ?>
+<?php require('./models/Read.php'); ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -52,7 +52,7 @@
                 </li>
             </ul>
         </div>
-        <a class="navbar-brand text-white font-weight-bold" href="./model/logout.php">Logout</a>
+        <a class="navbar-brand text-white font-weight-bold" href="./models/logout.php">Logout</a>
     </div>
     </nav>
     <br> <br>

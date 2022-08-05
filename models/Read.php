@@ -9,7 +9,7 @@ if (!isset($_SESSION['id'])) {
 }
 
 
-require_once('./model/Connect.php');
+require_once('./models/Connect.php');
 
 class Read extends Connect {
     private string $table; 
