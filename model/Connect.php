@@ -53,6 +53,16 @@ class Connect {
         }
     }
 
+    public static function logout() : void
+    {
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+        
+        session_destroy();
+        header("Location: ../login.php");
+    }
+
     public function getUsuario() : string
     {
         return $this->usuario;

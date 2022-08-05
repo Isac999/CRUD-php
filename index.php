@@ -52,7 +52,7 @@
                 </li>
             </ul>
         </div>
-        <a class="navbar-brand text-white font-weight-bold" href="./logout.php">Logout</a>
+        <a class="navbar-brand text-white font-weight-bold" href="./model/logout.php">Logout</a>
     </div>
     </nav>
     <br> <br>
