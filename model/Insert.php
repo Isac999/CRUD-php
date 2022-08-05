@@ -1,5 +1,5 @@
 <?php 
-require_once('../../Connect.php');
+require_once('./Connect.php');
 
 class Insert extends Connect {
     private array $listData;

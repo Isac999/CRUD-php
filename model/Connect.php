@@ -46,7 +46,7 @@ class Connect {
                 session_start();
             }
             $_SESSION['id'] = $login['id'];
-            header('Location: ./admin/admin.php');
+            header('Location: ./index.php');
     
         } else {
             echo '<script>alert("Incorrect email or password!")</script>';

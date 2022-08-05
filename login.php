@@ -1,5 +1,5 @@
 <?php 
-include('Connect.php');
+include('./model/Connect.php');
 
 $conn1 = new Connect('');
 $conn1->connectMysqli();
@@ -8,7 +8,6 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
 
     $conn1->queryLogin($_POST['email'], $_POST['password']);
 }
-
 ?>
 
 <!DOCTYPE html>
