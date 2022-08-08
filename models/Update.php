@@ -24,7 +24,7 @@ class Update extends Connect {
         $this->sendData($this->table_name, $this->listData);
     }
 
-    public function sendData($table_name, $listData) : void
+    public function sendData($table_name, $listData) : bool
     {
         $columns = array();
         $exec_columns = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = 'library' AND TABLE_NAME = '$table_name'";
@@ -40,6 +40,7 @@ class Update extends Connect {
             $exec = "UPDATE `$table_name` SET `$columns[$index]` = '$listData[$index]' WHERE `$table_name`.`id` = '$listData[0]'";
             $query = $this->mysqli->query($exec) or die('Falha ao executar update!');
         }
+        return true;
     }
 }
 
