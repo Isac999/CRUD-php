@@ -1,4 +1,7 @@
-<?php require('./models/Read.php'); ?>
+<?php 
+    require('./models/Read.php'); 
+    use \models\crud\Read;
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>

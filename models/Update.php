@@ -1,6 +1,8 @@
 <?php 
+namespace models\crud;
+
 require_once('./Connect.php');
-use \models\Connect;
+use \models\connect\Connect;
 
 class Update extends Connect {
     private array $listData;

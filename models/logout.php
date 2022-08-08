@@ -1,6 +1,6 @@
 <?php 
 require_once('./Connect.php');
-use \models\Connect;
+use \models\connect\Connect;
 
 Connect::logout();
 ?>

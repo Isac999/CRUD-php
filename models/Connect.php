@@ -1,5 +1,5 @@
 <?php 
-namespace models;
+namespace models\connect;
 use mysqli;
 
 class Connect {

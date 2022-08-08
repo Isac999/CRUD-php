@@ -1,4 +1,5 @@
 <?php 
+namespace models\crud;
 
 if (!isset($_SESSION)) {
     session_start();
@@ -10,7 +11,7 @@ if (!isset($_SESSION['id'])) {
 
 
 require_once('./models/Connect.php');
-use \models\Connect;
+use \models\connect\Connect;
 
 class Read extends Connect {
     private string $table; 
