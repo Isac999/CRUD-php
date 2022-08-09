@@ -9,11 +9,11 @@ class Connect {
     protected string $host;
     protected object $mysqli;
 
-    public function __construct($pass)
+    public function __construct(string $database)
     {
         $this->usuario = 'root';
-        $this->setSenha($pass);
-        $this->database = 'admin';
+        $this->senha = '';
+        $this->database = $database ? $this->setDatabase($database) : 'admin';
         $this->host = 'localhost';
     }
 
@@ -53,16 +53,6 @@ class Connect {
         } else {
             echo '<script>alert("Incorrect email or password!")</script>';
         }
-    }
-
-    public static function logout() : void
-    {
-        if (!isset($_SESSION)) {
-            session_start();
-        }
-        
-        session_destroy();
-        header("Location: ../login");
     }
 
     public function getUsuario() : string
