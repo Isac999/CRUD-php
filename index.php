@@ -55,7 +55,7 @@
                 </li>
             </ul>
         </div>
-        <a class="navbar-brand text-white font-weight-bold" href="./models/logout.php">Logout</a>
+        <a class="navbar-brand text-white font-weight-bold" href="./src/Utils/Logout.php">Logout</a>
     </div>
     </nav>
     <br> <br>
