@@ -7,6 +7,10 @@ use \models\connect\Connect;
 class Delete extends Connect {
     private array $arrayData;
 
+    public function __construct(string $database) {
+        parent::__construct($database);
+    }
+
     public function transformData($json) : void
     {
         $data = $json;
@@ -27,9 +31,9 @@ class Delete extends Connect {
     }
 }
 
-$delete = new Delete('');
-$delete->setDatabase('library');
-$delete->connectMysqli();
+$delete = new Delete('library');
+//$delete->setDatabase('library');
+//$delete->connectMysqli();
 
 $json = file_get_contents('php://input');
 $delete->transformData($json);

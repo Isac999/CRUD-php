@@ -69,9 +69,7 @@
                 <thead class="text-white font-weight-bold" style="background-color: #146176">
                     <tr>
                         <?php 
-                            $conn2 = new Read('');
-                            $conn2->setDatabase('library');
-                            $conn2->connectMysqli();
+                            $conn2 = new Read('library');
                             $conn2->paginacao($_GET['page'], $_GET['pagina']);
                         ?>
                     </tr>

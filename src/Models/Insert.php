@@ -7,6 +7,10 @@ use \models\connect\Connect;
 class Insert extends Connect {
     private array $listData;
     private string $table_name;
+    
+    public function __construct($database) {
+        parent::__construct($database);
+    }
 
     public function transformData($json) : void
     {
@@ -65,9 +69,9 @@ class Insert extends Connect {
     }
 }
 
-$insert = new Insert('');
-$insert->setDatabase('library');
-$insert->connectMysqli();
+$insert = new Insert('library');
+//$insert->setDatabase('library');
+//$insert->connectMysqli();
 
 $json = file_get_contents('php://input');
 $insert->transformData($json);

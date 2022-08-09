@@ -1,9 +1,8 @@
 <?php 
-require('./models/Connect.php');
+require_once('./src/Models/Connect.php');
 use \models\connect\Connect;
 
 $conn1 = new Connect('');
-$conn1->connectMysqli();
 
 if (isset($_POST['email']) && isset($_POST['password'])) {
 

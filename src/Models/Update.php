@@ -8,6 +8,10 @@ class Update extends Connect {
     private array $listData;
     private string $table_name;
 
+    public function __construct($database) {
+        parent::__construct($database);
+    }
+
     public function transformData($json) : void
     {
         $data = $json;
@@ -46,9 +50,9 @@ class Update extends Connect {
     }
 }
 
-$update = new Update('');
-$update->setDatabase('library');
-$update->connectMysqli();
+$update = new Update('library');
+//$update->setDatabase('library');
+//$update->connectMysqli();
 
 $json = file_get_contents('php://input');
 $update->transformData($json);

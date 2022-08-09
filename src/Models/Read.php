@@ -24,6 +24,10 @@ class Read extends Connect {
     public int $proximo;
     public float $total_pages;
 
+    public function __construct($database) {
+        parent::__construct($database);
+    }
+    
     public function paginacao($table_name, $number_page) : void
     {
         if (empty($table_name)) {
