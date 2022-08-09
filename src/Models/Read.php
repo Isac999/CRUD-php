@@ -10,7 +10,7 @@ if (!isset($_SESSION['id'])) {
 }
 
 
-require_once('./models/Connect.php');
+require_once('./src/Models/Connect.php');
 use \models\connect\Connect;
 
 class Read extends Connect {

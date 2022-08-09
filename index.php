@@ -1,5 +1,5 @@
 <?php 
-    require('./models/Read.php'); 
+    require_once('./src/Models/Read.php'); 
     use \models\crud\Read;
 ?>
 <!DOCTYPE html>

@@ -1,7 +1,7 @@
 <?php 
 namespace models\crud;
 
-require_once('./Connect.php');
+require_once('./src/Models/Connect.php');
 use \models\connect\Connect;
 
 class Insert extends Connect {
